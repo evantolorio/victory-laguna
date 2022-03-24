@@ -17,8 +17,9 @@ class PageController extends Controller
     public function index(Request $request)
     {
         $data = [
-            'fname' => 'Evan',
-            'lname' => 'Tolorio'
+            'homeImgUrl' => asset('giving-site/homepage.png'),
+            'phoneUrl'   => asset('giving-site/phone.png'),
+            'logoUrl'    => asset('giving-site/victory_blue.png'),
         ];
 
         return Inertia::render('Dashboard/Index', $data);
