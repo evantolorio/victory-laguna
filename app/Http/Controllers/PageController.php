@@ -9,7 +9,7 @@ class PageController extends Controller
 {
 
     /**
-     * Undocumented function
+     * Fetch Home Page aka the Give Page
      *
      * @param Request $request
      * @return void
@@ -22,6 +22,22 @@ class PageController extends Controller
             'logoUrl'    => asset('giving-site/victory_blue.png'),
         ];
 
-        return Inertia::render('Dashboard/Index', $data);
+        return Inertia::render('HomePage/Index', $data);
+    }
+
+    /**
+     * Fetch Who We Are page
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function whoWeAre(Request $request)
+    {
+        $data = [
+            'homeImgUrl' => asset('giving-site/homepage.png'),
+            'logoUrl'    => asset('giving-site/victory_blue.png'),
+        ];
+
+        return Inertia::render('HomePage/WhoWeAre', $data);
     }
 }
