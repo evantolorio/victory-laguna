@@ -40,4 +40,20 @@ class PageController extends Controller
 
         return Inertia::render('HomePage/WhoWeAre', $data);
     }
+
+    /**
+     * Fetch Contact Us page
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function contactUs(Request $request)
+    {
+        $data = [
+            'homeImgUrl' => asset('giving-site/homepage.png'),
+            'logoUrl'    => asset('giving-site/victory_blue.png'),
+        ];
+
+        return Inertia::render('HomePage/ContactUs', $data);
+    }
 }

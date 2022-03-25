@@ -55,7 +55,11 @@
               > 
                 Give
               </a>
-              <a href="#" class="ml-6 whitespace-nowrap inline-flex items-center justify-center px-6 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75"> 
+              <a 
+                href="#" 
+                class="ml-6 whitespace-nowrap inline-flex items-center justify-center px-6 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75"
+                @click.prevent="goToPage('/contact-us')"
+              > 
                 Contact Us 
               </a>
             </div>

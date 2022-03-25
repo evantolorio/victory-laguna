@@ -1,5 +1,5 @@
 <template>
-  <layout title="Who We Are | Victory Laguna Giving Site"
+  <layout title="Home | Victory Laguna Giving Site"
     :homeImgUrl="homeImgUrl"
     :logoUrl="logoUrl"
   >
@@ -70,7 +70,7 @@
 
 <script>
   import Layout from '../Layout';
-  
+
   export default {
     components: {
       Layout,
