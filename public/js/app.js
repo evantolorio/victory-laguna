@@ -19345,7 +19345,22 @@ __webpack_require__.r(__webpack_exports__);
     Layout: _Layout__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: ['homeImgUrl', 'phoneUrl', 'logoUrl'],
-  methods: {}
+  data: function data() {
+    return {
+      givingCategoryHeight: 0
+    };
+  },
+  computed: {
+    phoneImageUrl: function phoneImageUrl() {
+      return "url(".concat(this.phoneUrl, ")");
+    }
+  },
+  methods: {},
+  mounted: function mounted() {
+    var navLinksHeight = document.querySelector('#nav-links').offsetHeight;
+    var initialViewportHeight = document.querySelector('#initial-viewport').offsetHeight;
+    this.givingCategoryHeight = initialViewportHeight - navLinksHeight;
+  }
 });
 
 /***/ }),
@@ -19663,13 +19678,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "relative bg-white"
-};
-var _hoisted_2 = {
-  "class": "grid grid-cols-2"
+  "class": "grid grid-cols-2 h-full"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": ""
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Buttons "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "text-center mt-20"
@@ -19711,10 +19723,6 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_4 = {
-  id: "phone-div"
-};
-var _hoisted_5 = ["src"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("layout");
 
@@ -19724,13 +19732,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     logoUrl: $props.logoUrl
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Select Type of Giving "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Phone "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-        src: $props.phoneUrl,
-        alt: "",
-        "class": ""
-      }, null, 8
-      /* PROPS */
-      , _hoisted_5)])])])];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        id: "giving-categories",
+        "class": "relative bg-white",
+        style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)({
+          'height': "".concat($data.givingCategoryHeight, "px")
+        })
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Select Type of Giving "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        id: "phone-div",
+        "class": "bg-cover",
+        style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)({
+          'background-image': $options.phoneImageUrl
+        })
+      }, null, 4
+      /* STYLE */
+      )])], 4
+      /* STYLE */
+      )];
     }),
     _: 1
     /* STABLE */
@@ -19807,6 +19825,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
+  id: "initial-viewport",
   "class": "h-screen"
 };
 var _hoisted_2 = {
@@ -19820,12 +19839,13 @@ var _hoisted_4 = {
 };
 var _hoisted_5 = ["src"];
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"w-3/5 mx-auto grid grid-cols-1 mt-10\"><div class=\"flex justify-center mt-10\"><p class=\"w-full italic text-5xl font-bold\"> &quot;&quot; </p></div><div class=\"flex justify-center mt-4\"><p class=\"w-full italic text-center text-2xl font-semibold\"> ... for God loves a cheerful giver. </p></div><div class=\"flex justify-center mt-4\"><p class=\"w-full italic text-right\"> 2 Corinthians 9:7 </p></div></div><div class=\"flex justify-center mt-20\"><div class=\"hidden md:flex items-center\"><a href=\"#\" class=\"whitespace-nowrap inline-flex items-center justify-center px-6 py-4 border border-transparent shadow-sm text-base font-medium text-white bg-victory-blue\"> VICTORY LAGUNA GIVING SITE </a></div></div>", 2);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"w-3/5 mx-auto grid grid-cols-1 mt-10\"><div class=\"flex justify-center mt-10\"><p class=\"w-full italic text-5xl font-bold\"> &quot;&quot; </p></div><div class=\"flex justify-center mt-4\"><p class=\"w-full italic text-center text-2xl font-semibold\"> ... for God loves a cheerful giver. </p></div><div class=\"flex justify-center mt-4\"><p class=\"w-full italic text-right\"> 2 Corinthians 9:7 </p></div></div><div class=\"flex justify-center mt-20\"><div class=\"hidden md:flex items-center\"><a href=\"#\" class=\"whitespace-nowrap inline-flex items-center justify-center px-6 py-4 border border-transparent shadow-sm text-base font-medium text-white bg-victory-blue cursor-auto\"> VICTORY LAGUNA GIVING SITE </a></div></div>", 2);
 
 var _hoisted_8 = {
-  "class": "relative bg-white"
+  "class": "relative bg-white h-full"
 };
 var _hoisted_9 = {
+  id: "nav-links",
   "class": "max-w-7xl mx-auto px-4 sm:px-6"
 };
 var _hoisted_10 = {

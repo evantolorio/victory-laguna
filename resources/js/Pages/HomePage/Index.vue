@@ -4,9 +4,11 @@
     :logoUrl="logoUrl"
   >
 
-    <div class="relative bg-white">
+    <div id="giving-categories" class="relative bg-white"
+      :style="{'height': `${givingCategoryHeight}px`}"
+    >
       <!-- Select Type of Giving -->
-      <div class="grid grid-cols-2">
+      <div class="grid grid-cols-2 h-full">
         <div class="">
           <!-- Buttons -->
           <div class="text-center mt-20">
@@ -56,9 +58,9 @@
           </div>
         </div>
 
-        <div id="phone-div">
-          <!-- Phone -->
-          <img :src="phoneUrl" alt="" class="">
+        <div id="phone-div" class="bg-cover"
+          :style="{'background-image': phoneImageUrl}"
+        >
         </div>
       </div>
     </div>
@@ -78,8 +80,27 @@
 
     props: ['homeImgUrl', 'phoneUrl', 'logoUrl'],
 
+    data() {
+      return {
+        givingCategoryHeight: 0
+      }
+    },
+
+    computed: {
+      phoneImageUrl() {
+        return `url(${this.phoneUrl})`; 
+      }
+    },
+
     methods: {
 
+    },
+
+    mounted() {
+      const navLinksHeight = document.querySelector('#nav-links').offsetHeight;
+      const initialViewportHeight = document.querySelector('#initial-viewport').offsetHeight;
+
+      this.givingCategoryHeight = initialViewportHeight - navLinksHeight;
     }
   }
 </script> 

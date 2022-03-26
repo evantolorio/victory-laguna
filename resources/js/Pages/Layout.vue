@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen">
+  <div id="initial-viewport" class="h-screen">
     <div class="grid grid-cols-2 h-full">
       <div class="bg-gray-50 bg-cover"
         :style="{'background-image': homeImageUrl}"
@@ -31,16 +31,16 @@
           </div>
           <div class="flex justify-center mt-20">
             <div class="hidden md:flex items-center">
-              <a href="#" class="whitespace-nowrap inline-flex items-center justify-center px-6 py-4 border border-transparent shadow-sm text-base font-medium text-white bg-victory-blue"> 
+              <a href="#" class="whitespace-nowrap inline-flex items-center justify-center px-6 py-4 border border-transparent shadow-sm text-base font-medium text-white bg-victory-blue cursor-auto"> 
                 VICTORY LAGUNA GIVING SITE
               </a>
             </div>
           </div>
         </div>
       </div>
-      <div class="relative bg-white">
+      <div class="relative bg-white h-full">
         <!-- Right Side -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div id="nav-links" class="max-w-7xl mx-auto px-4 sm:px-6">
           <div class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
             <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
               <a href="#" 
