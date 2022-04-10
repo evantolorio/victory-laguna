@@ -12,7 +12,7 @@ class PageController extends Controller
      * Fetch Home Page aka the Give Page
      *
      * @param Request $request
-     * @return void
+     * @return Inertia
      */
     public function index(Request $request)
     {
@@ -25,11 +25,27 @@ class PageController extends Controller
         return Inertia::render('HomePage/Index', $data);
     }
 
+   /**
+     * Fetch Give Page w/ details
+     *
+     * @param Request $request
+     * @return Inertia
+     */
+    public function give(Request $request)
+    {
+        $data = [
+            'logoUrl'      => asset('giving-site/victory_blue.png'),
+            'givingImgUrl' => asset('giving-site/giving.jpg'),
+        ];
+
+        return Inertia::render('HomePage/Give', $data);
+    }
+
     /**
      * Fetch Who We Are page
      *
      * @param Request $request
-     * @return void
+     * @return Inertia
      */
     public function whoWeAre(Request $request)
     {
@@ -45,7 +61,7 @@ class PageController extends Controller
      * Fetch Contact Us page
      *
      * @param Request $request
-     * @return void
+     * @return Inertia
      */
     public function contactUs(Request $request)
     {
