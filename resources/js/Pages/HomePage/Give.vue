@@ -200,7 +200,7 @@
                   <!-- Giving Breakdown -->
                   <template v-for="(breakdown, index) in givingBreakdown" :key="index">
                     <div class="col-span-6">
-                        <div class="grid grid-cols-6 gap-4">
+                        <div class="grid grid-cols-7 gap-4">
                           <div class="col-span-6 sm:col-span-1">
                           <label for="currency" class="block text-sm font-medium text-gray-700">Currency</label>
                           <select v-model="currency"
@@ -233,6 +233,16 @@
                             <option value="real_life">Real LIFE Foundation</option>
                             <option value="others">Others</option>
                           </select>
+                        </div>
+
+                        <div v-show="breakdown.typeOfGiving == 'others'"
+                          class="col-span-6 sm:col-span-2"
+                        >
+                          <label for="others" class="block text-sm font-medium text-gray-700">&nbsp;</label>
+                          <input v-model="breakdown.others"
+                            type="text" name="others" id="others"
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                          >
                         </div>
 
                         <div v-if="index > 0"
@@ -336,7 +346,8 @@
         givingBreakdown: [
           {
             'amount': 0.0,
-            'typeOfGiving': 'tithes_and_offering'
+            'typeOfGiving': 'tithes_and_offering',
+            'others': ''
           }
         ]
       }
@@ -369,10 +380,16 @@
         let items = [];
 
         this.givingBreakdown.forEach(breakdown => {
+
+          let typeOfGiving = this.expoundTypeOfGiving(breakdown.typeOfGiving);
+          let transformedName = (typeOfGiving == 'Others') 
+            ? `${typeOfGiving} - ${breakdown.others}`
+            : typeOfGiving;
+
           items.push({
             amount: {value: parseFloat(breakdown.amount)}, 
             totalAmount: {value: parseFloat(breakdown.amount)}, 
-            name: this.expoundTypeOfGiving(breakdown.typeOfGiving)
+            name: transformedName
           });
         });
 
@@ -416,7 +433,8 @@
       addGiving() {
         const breakdown = {
           'amount': 0.0,
-          'typeOfGiving': 'tithes_and_offering'
+          'typeOfGiving': 'tithes_and_offering',
+          'others': ''
         };
 
         this.givingBreakdown.push(breakdown);
@@ -436,7 +454,6 @@
       },
 
       give() {
-
         const options = {
           method: 'POST',
           headers: {
@@ -454,9 +471,9 @@
             },
             items: this.parsedItems,
             redirectUrl: {
-              success: 'https://google.com?status=success',
-              failure: 'https://google.com?status=failure',
-              cancel: 'https://google.com?status=cancel'
+              success: 'https://d78f-136-158-67-108.ngrok.io/give?status=success',
+              failure: 'https://d78f-136-158-67-108.ngrok.io/give?status=failure',
+              cancel: 'https://d78f-136-158-67-108.ngrok.io/give?status=cancel'
             },
             requestReferenceNumber: 'LB1650438133518'
           })
