@@ -65,7 +65,7 @@
                         : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 border-gray-200 border-b-2'"
                       @click.prevent="activeTab = 'general'"
                     >
-                      <a href="#" class="text-sm font-medium">
+                      <a href="#" class="text font-medium">
                         General Information
                       </a>
                     </div>
@@ -77,7 +77,7 @@
                         : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 border-gray-200 border-b-2'"
                       @click.prevent="activeTab = 'specific'"
                     >
-                      <a href="#" class="text-sm font-medium">
+                      <a href="#" class="text font-medium">
                         Giving Information
                       </a>
                     </div>
@@ -99,12 +99,12 @@
                       id="location" name="location" autocomplete="location-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
                       <option disabled value="">Please select center</option>
-                      <option value="calamba">Victory Calamba</option>
                       <option value="cabuyao">Victory Cabuyao</option>
+                      <option value="calamba">Victory Calamba</option>
                       <option value="los_banos">Victory Los Baños</option>
                       <option value="san_pablo">Victory San Pablo</option>
+                      <option value="sta_cruz">Victory Santa Cruz</option>
                       <option value="siniloan">Victory Siniloan</option>
-                      <option value="sta_cruz">Victory Sta. Cruz</option>
                     </select>
                   </div>
 
@@ -187,13 +187,24 @@
 
                   <div class="col-span-6 sm:col-span-6 mt-4">
                     <div class="flex items-center">
-                      <h1 class="text-sm font-medium text-gray-900 mr-2">Giving Breakdown</h1>
-                      <svg class="flex-shrink-0 h-6 w-6 text-gray-400 cursor-pointer" 
-                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      <h1 class="text font-medium text-gray-900 mr-2">Type of Giving</h1>
+                      <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-6">
+                    <div class="flex items-center">
+                      <button type="button" 
+                        class="inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25 hover:bg-victory-blue/50"
                         @click.prevent="addGiving"
                       >
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
-                      </svg>
+                        Add Giving
+                        <svg class="ml-2 h-5 w-5 text-victory-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                        </svg>
+                      </button>
                     </div>
                   </div>
 
@@ -471,9 +482,9 @@
             },
             items: this.parsedItems,
             redirectUrl: {
-              success: 'https://d78f-136-158-67-108.ngrok.io/give?status=success',
-              failure: 'https://d78f-136-158-67-108.ngrok.io/give?status=failure',
-              cancel: 'https://d78f-136-158-67-108.ngrok.io/give?status=cancel'
+              success: 'https://27d8-136-158-78-20.ngrok.io/give?status=success',
+              failure: 'https://27d8-136-158-78-20.ngrok.io/give?status=failure',
+              cancel: 'https://27d8-136-158-78-20.ngrok.io/give?status=cancel'
             },
             requestReferenceNumber: 'LB1650438133518'
           })
