@@ -75,7 +75,7 @@
                       :class="activeTab == 'specific' 
                         ? 'text-victory-blue border-victory-blue border-b-2 bg-victory-blue/25' 
                         : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 border-gray-200 border-b-2'"
-                      @click.prevent="activeTab = 'specific'"
+                      @click.prevent="proceedToGiving"
                     >
                       <a href="#" class="text font-medium">
                         Giving Information
@@ -296,7 +296,7 @@
             <button v-if="activeTab == 'general'"
               type="button" 
               class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              @click.prevent="activeTab = 'specific'"
+              @click.prevent="proceedToGiving"
             >
               Next
             </button>
@@ -309,10 +309,12 @@
                 Back
               </button>
               <button type="submit" 
-                class="inline-flex justify-center ml-3 py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                class="inline-flex justify-center ml-3 py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled"
+                :class="[giveProcessing ? 'disabled:bg-victory-blue/75 cursor-progress' : '']"
+                :disabled="giveProcessing"
                 @click.prevent="give"
               >
-                Give
+                {{ giveButtonText }}
               </button>
             </template>
           </div>
@@ -327,11 +329,12 @@
 
 <script>
   export default {
-    props: ['logoUrl', 'givingImgUrl'],
+    props: ['logoUrl', 'givingImgUrl', 'pkCAL', 'pkLB', 'pkSP', 'pkSC'],
 
     data() {
       return {
         activeTab: 'general',
+        giveProcessing: false,
         giveToCenter: '',
         giveThruChannel: '',
         dataPrivacy: false,
@@ -367,6 +370,10 @@
     computed: {
       givingImageUrl() {
         return `url(${this.givingImgUrl})`; 
+      },
+
+      giveButtonText() {
+        return (this.giveProcessing) ? 'Processing...' : 'Give';
       },
 
       formattedTotalAmount() {
@@ -405,7 +412,36 @@
         });
 
         return items;
-      }
+      },
+
+      selectedCenterPrimaryKey() {
+        let selectedCenter = this.giveToCenter;
+
+        switch (selectedCenter) {
+          case 'cabuyao':
+            return this.pkCAL;
+
+          case 'calamba':
+            return this.pkCAL;
+
+          case 'los_banos':
+            return this.pkLB;
+
+          case 'san_pablo':
+            return this.pkSP;
+
+          case 'sta_cruz':
+            return this.pkSC;
+
+          case 'siniloan':
+            return this.pkSC;
+        
+          default:
+            return '';
+        }
+
+      },
+
     },
 
     methods: {
@@ -441,6 +477,14 @@
         }
       },
 
+      proceedToGiving() {
+        // Proceed to next tab if all general info fields are filled up
+        if (this.giveToCenter && this.giveThruChannel && this.dataPrivacy)
+          this.activeTab = 'specific';
+          
+        return;  
+      },
+
       addGiving() {
         const breakdown = {
           'amount': 0.0,
@@ -464,13 +508,52 @@
         return vars;
       },
 
+      parseReferenceNumber(date) {
+        let selectedCenter = this.giveToCenter;
+        let center = '';
+
+        switch (selectedCenter) {
+          case 'cabuyao':
+            center = 'CAB';
+            break;
+
+          case 'calamba':
+            center = 'CAL';
+            break;
+
+          case 'los_banos':
+            center = 'LB';
+            break;
+
+          case 'san_pablo':
+            center = 'SP';
+            break;
+
+          case 'sta_cruz':
+            center = 'SC';
+            break;
+
+          case 'siniloan':
+            center = 'SL';
+            break;
+        
+          default:
+            break;
+        }
+
+        return `${center}-${date.getFullYear()}-${date.getTime()}`;
+
+      },
+
       give() {
+        this.giveProcessing = true;
+
         const options = {
           method: 'POST',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: 'Basic cGstY20zUHQwbk45SHNDRkJOczgyOUZQN0FuaU1VcXlidkFPcmF0ajRqVk9qQTo='
+            Authorization: `Basic ${this.selectedCenterPrimaryKey}`
           },
           body: JSON.stringify({
             totalAmount: {value: this.totalAmount, currency: this.currency},
@@ -486,7 +569,7 @@
               failure: 'https://27d8-136-158-78-20.ngrok.io/give?status=failure',
               cancel: 'https://27d8-136-158-78-20.ngrok.io/give?status=cancel'
             },
-            requestReferenceNumber: 'LB1650438133518'
+            requestReferenceNumber: this.parseReferenceNumber(new Date())
           })
         };
 
@@ -511,5 +594,6 @@
         this.givingBreakdown[0]['typeOfGiving'] = urlParams['init'];
       }
     }
+
   }
 </script> 

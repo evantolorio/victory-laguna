@@ -34,8 +34,12 @@ class PageController extends Controller
     public function give(Request $request)
     {
         $data = [
+            'pkCAL'        => base64_encode(env('PAYMAYA_PK_CAL') . ':'),
+            'pkLB'         => base64_encode(env('PAYMAYA_PK_LB') . ':'),
+            'pkSP'         => base64_encode(env('PAYMAYA_PK_SP') . ':'),
+            'pkSC'         => base64_encode(env('PAYMAYA_PK_SC') . ':'),
             'logoUrl'      => asset('giving-site/victory_blue.png'),
-            'givingImgUrl' => asset('giving-site/giving.jpg'),
+            'givingImgUrl' => asset('giving-site/giving.jpg')
         ];
 
         return Inertia::render('HomePage/Give', $data);

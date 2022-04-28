@@ -19339,10 +19339,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['logoUrl', 'givingImgUrl'],
+  props: ['logoUrl', 'givingImgUrl', 'pkCAL', 'pkLB', 'pkSP', 'pkSC'],
   data: function data() {
     return {
       activeTab: 'general',
+      giveProcessing: false,
       giveToCenter: '',
       giveThruChannel: '',
       dataPrivacy: false,
@@ -19371,6 +19372,9 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     givingImageUrl: function givingImageUrl() {
       return "url(".concat(this.givingImgUrl, ")");
+    },
+    giveButtonText: function giveButtonText() {
+      return this.giveProcessing ? 'Processing...' : 'Give';
     },
     formattedTotalAmount: function formattedTotalAmount() {
       var sum = 0.0;
@@ -19402,6 +19406,32 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
       return items;
+    },
+    selectedCenterPrimaryKey: function selectedCenterPrimaryKey() {
+      var selectedCenter = this.giveToCenter;
+
+      switch (selectedCenter) {
+        case 'cabuyao':
+          return this.pkCAL;
+
+        case 'calamba':
+          return this.pkCAL;
+
+        case 'los_banos':
+          return this.pkLB;
+
+        case 'san_pablo':
+          return this.pkSP;
+
+        case 'sta_cruz':
+          return this.pkSC;
+
+        case 'siniloan':
+          return this.pkSC;
+
+        default:
+          return '';
+      }
     }
   },
   methods: {
@@ -19435,6 +19465,11 @@ __webpack_require__.r(__webpack_exports__);
           return 'Tithes and Offering';
       }
     },
+    proceedToGiving: function proceedToGiving() {
+      // Proceed to next tab if all general info fields are filled up
+      if (this.giveToCenter && this.giveThruChannel && this.dataPrivacy) this.activeTab = 'specific';
+      return;
+    },
     addGiving: function addGiving() {
       var breakdown = {
         'amount': 0.0,
@@ -19453,13 +19488,49 @@ __webpack_require__.r(__webpack_exports__);
       });
       return vars;
     },
+    parseReferenceNumber: function parseReferenceNumber(date) {
+      var selectedCenter = this.giveToCenter;
+      var center = '';
+
+      switch (selectedCenter) {
+        case 'cabuyao':
+          center = 'CAB';
+          break;
+
+        case 'calamba':
+          center = 'CAL';
+          break;
+
+        case 'los_banos':
+          center = 'LB';
+          break;
+
+        case 'san_pablo':
+          center = 'SP';
+          break;
+
+        case 'sta_cruz':
+          center = 'SC';
+          break;
+
+        case 'siniloan':
+          center = 'SL';
+          break;
+
+        default:
+          break;
+      }
+
+      return "".concat(center, "-").concat(date.getFullYear(), "-").concat(date.getTime());
+    },
     give: function give() {
+      this.giveProcessing = true;
       var options = {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization: 'Basic cGstY20zUHQwbk45SHNDRkJOczgyOUZQN0FuaU1VcXlidkFPcmF0ajRqVk9qQTo='
+          Authorization: "Basic ".concat(this.selectedCenterPrimaryKey)
         },
         body: JSON.stringify({
           totalAmount: {
@@ -19483,7 +19554,7 @@ __webpack_require__.r(__webpack_exports__);
             failure: 'https://27d8-136-158-78-20.ngrok.io/give?status=failure',
             cancel: 'https://27d8-136-158-78-20.ngrok.io/give?status=cancel'
           },
-          requestReferenceNumber: 'LB1650438133518'
+          requestReferenceNumber: this.parseReferenceNumber(new Date())
         })
       };
       fetch('https://pg-sandbox.paymaya.com/checkout/v1/checkouts', options).then(function (response) {
@@ -20235,6 +20306,7 @@ var _hoisted_100 = {
 var _hoisted_101 = {
   "class": "px-4 py-3 bg-gray-50 text-right sm:px-6"
 };
+var _hoisted_102 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navigation "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     "class": "h-16 w-auto",
@@ -20276,8 +20348,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* CLASS */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["w-full flex justify-center py-2 rounded-t cursor-pointer", $data.activeTab == 'specific' ? 'text-victory-blue border-victory-blue border-b-2 bg-victory-blue/25' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 border-gray-200 border-b-2']),
-    onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $data.activeTab = 'specific';
+    onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.proceedToGiving && $options.proceedToGiving.apply($options, arguments);
     }, ["prevent"]))
   }, _hoisted_22, 2
   /* CLASS */
@@ -20440,8 +20512,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 0,
     type: "button",
     "class": "inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
-    onClick: _cache[15] || (_cache[15] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $data.activeTab = 'specific';
+    onClick: _cache[15] || (_cache[15] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.proceedToGiving && $options.proceedToGiving.apply($options, arguments);
     }, ["prevent"]))
   }, " Next ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
@@ -20453,11 +20525,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["prevent"]))
   }, " Back "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
-    "class": "inline-flex justify-center ml-3 py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["inline-flex justify-center ml-3 py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled", [$data.giveProcessing ? 'disabled:bg-victory-blue/75 cursor-progress' : '']]),
+    disabled: $data.giveProcessing,
     onClick: _cache[17] || (_cache[17] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.give && $options.give.apply($options, arguments);
     }, ["prevent"]))
-  }, " Give ")], 64
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.giveButtonText), 11
+  /* TEXT, CLASS, PROPS */
+  , _hoisted_102)], 64
   /* STABLE_FRAGMENT */
   ))])])])])]);
 }
