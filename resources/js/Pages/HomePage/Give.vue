@@ -145,8 +145,12 @@
                 id="specific-information" 
                 class="col-span-5"
               >
-                <div class="grid grid-cols-6 gap-6">
-
+                <!-- Credit/Debit Giving Channel -->
+                <div v-if="giveThruChannel == 'credit_debit'" class="grid grid-cols-6 gap-6">
+                  
+                  <div class="col-span-6">
+                    <h1 class="text-center font-bold text-gray-900">{{ centerDetails['name'] }}</h1>
+                  </div>
                   <div class="col-span-6 sm:col-span-3">
                     <label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label>
                     <input v-model="firstName"
@@ -288,6 +292,52 @@
                   </div>
 
                 </div>
+
+                <!-- GCash or PayMaya giving channel -->
+                <template v-else>
+                  <div v-if="giveThruChannel == 'gcash'" 
+                    class="grid grid-cols-6 gap-4"
+                  >
+                    <div class="col-span-6 mx-auto">
+                      <img class="" :src="centerDetails['gcashQR']" alt="GCash QR Code">
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 1</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">Open the GCash app. Tap <b>Pay QR</b>.</p>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 2</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">
+                        Scan or upload the QR code; check to see that you're giving to <b>{{ centerDetails['name'] }}</b>.
+                      </p>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 3</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">
+                        Input the amount; tap <b>Next</b>. Review the details; tap <b>Pay</b>.
+                      </p>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 4</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">
+                        Kindly upload the transaction slip of your giving at <a :href="`https://${centerDetails['givingAckLink']}`" target="_blank" class="text-indigo-600">{{ centerDetails['givingAckLink'] }}</a> or email at <a :href="`mailto:${centerDetails['email']}`" target="_blank" class="text-indigo-600">{{ centerDetails['email'] }}</a>, so we can properly acknowledge and account your giving.
+                      </p>
+                    </div>
+                  </div>
+                  <div v-else
+                    class="grid-cols-5 gap-6"
+                  >
+                    <h1>PayMaya</h1>
+                  </div>
+                </template>
               </div>
 
             </div>
@@ -329,7 +379,11 @@
 
 <script>
   export default {
-    props: ['logoUrl', 'givingImgUrl', 'pkCAL', 'pkLB', 'pkSP', 'pkSC'],
+    props: [
+      'appUrl', 'payMayaUrl', 'logoUrl', 'givingImgUrl', 
+      'pkCAL', 'pkLB', 'pkSP', 'pkSC', 
+      'gcashCALQR', 'gcashLBQR', 'gcashSPQR', 'gcashSCQR',
+    ],
 
     data() {
       return {
@@ -414,31 +468,70 @@
         return items;
       },
 
-      selectedCenterPrimaryKey() {
+      centerDetails() {
         let selectedCenter = this.giveToCenter;
+        let centerDetails = {
+          'name': '',
+          'givingAckLink': '',
+          'email': '',
+          'gcashQR': '',
+          'primaryKey': ''
+        };
 
         switch (selectedCenter) {
           case 'cabuyao':
-            return this.pkCAL;
+            centerDetails['name'] = 'Victory Calamba';
+            centerDetails['givingAckLink'] = 'bit.ly/vcalambaonlinegiving';
+            centerDetails['email'] = 'cabuyao@victory.org.ph';
+            centerDetails['gcashQR'] = '';
+            centerDetails['primaryKey'] = this.pkCAL;
+            break;
 
           case 'calamba':
-            return this.pkCAL;
+            centerDetails['name'] = 'Victory Calamba';
+            centerDetails['givingAckLink'] = 'bit.ly/vcalambaonlinegiving';
+            centerDetails['email'] = 'calamba@victory.org.ph';
+            centerDetails['gcashQR'] = this.gcashCALQR;
+            centerDetails['primaryKey'] = this.pkCAL;
+            break;
 
           case 'los_banos':
-            return this.pkLB;
+            centerDetails['name'] = 'Victory Los Baños';
+            centerDetails['givingAckLink'] = 'bit.ly/vlbonlinegiving';
+            centerDetails['email'] = 'losbanos@victory.org.ph';
+            centerDetails['gcashQR'] = this.gcashLBQR;
+            centerDetails['primaryKey'] = this.pkLB;
+            break;
 
           case 'san_pablo':
-            return this.pkSP;
+            centerDetails['name'] = 'Victory San Pablo';
+            centerDetails['givingAckLink'] = 'bit.ly/vsanpabloonlinegiving';
+            centerDetails['email'] = 'sanpablo@victory.org.ph';
+            centerDetails['gcashQR'] = this.gcashSPQR;
+            centerDetails['primaryKey'] = this.pkSP;
+            break;
 
           case 'sta_cruz':
-            return this.pkSC;
+            centerDetails['name'] = 'Victory Santa Cruz';
+            centerDetails['givingAckLink'] = 'bit.ly/vsantacruzonlinegiving';
+            centerDetails['email'] = 'santacruz@victory.org.ph';
+            centerDetails['gcashQR'] = this.gcashSCQR;
+            centerDetails['primaryKey'] = this.pkSC;
+            break;
 
           case 'siniloan':
-            return this.pkSC;
+            centerDetails['name'] = 'Victory Santa Cruz';
+            centerDetails['givingAckLink'] = 'bit.ly/vsantacruzonlinegiving';
+            centerDetails['email'] = 'siniloan@victory.org.ph';
+            centerDetails['gcashQR'] = '';
+            centerDetails['primaryKey'] = this.pkSC;
+            break;
         
           default:
-            return '';
+            break;
         }
+
+        return centerDetails;
 
       },
 
@@ -511,6 +604,8 @@
       parseReferenceNumber(date) {
         let selectedCenter = this.giveToCenter;
         let center = '';
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
 
         switch (selectedCenter) {
           case 'cabuyao':
@@ -541,19 +636,24 @@
             break;
         }
 
-        return `${center}-${date.getFullYear()}-${date.getTime()}`;
+        month = (month < 10) ? '0'+month : month;
+        day   = (day < 10) ? '0'+day : day;
+        
+
+        return `${center}-${month}${day}${date.getFullYear()}-${date.getTime()}`;
 
       },
 
       give() {
         this.giveProcessing = true;
+        let centerDetails = this.centerDetails;
 
         const options = {
           method: 'POST',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: `Basic ${this.selectedCenterPrimaryKey}`
+            Authorization: `Basic ${centerDetails['primaryKey']}`
           },
           body: JSON.stringify({
             totalAmount: {value: this.totalAmount, currency: this.currency},
@@ -565,15 +665,15 @@
             },
             items: this.parsedItems,
             redirectUrl: {
-              success: 'https://27d8-136-158-78-20.ngrok.io/give?status=success',
-              failure: 'https://27d8-136-158-78-20.ngrok.io/give?status=failure',
-              cancel: 'https://27d8-136-158-78-20.ngrok.io/give?status=cancel'
+              success: `${this.appUrl}/give?status=success`,
+              failure: `${this.appUrl}/give?status=failure`,
+              cancel: `${this.appUrl}/give?status=cancel`
             },
             requestReferenceNumber: this.parseReferenceNumber(new Date())
           })
         };
 
-        fetch('https://pg-sandbox.paymaya.com/checkout/v1/checkouts', options)
+        fetch(`${this.payMayaUrl}`, options)
           .then(response => response.json())
           .then((response) => {
             // Redirect to PayMaya Gateway

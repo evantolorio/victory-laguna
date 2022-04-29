@@ -34,12 +34,18 @@ class PageController extends Controller
     public function give(Request $request)
     {
         $data = [
+            'appUrl'       => env('APP_URL'),
+            'payMayaUrl'   => env('PAYMAYA_URL'),
+            'logoUrl'      => asset('giving-site/victory_blue.png'),
+            'givingImgUrl' => asset('giving-site/giving.jpg'),
             'pkCAL'        => base64_encode(env('PAYMAYA_PK_CAL') . ':'),
             'pkLB'         => base64_encode(env('PAYMAYA_PK_LB') . ':'),
             'pkSP'         => base64_encode(env('PAYMAYA_PK_SP') . ':'),
             'pkSC'         => base64_encode(env('PAYMAYA_PK_SC') . ':'),
-            'logoUrl'      => asset('giving-site/victory_blue.png'),
-            'givingImgUrl' => asset('giving-site/giving.jpg')
+            'gcashCALQR'   => asset('giving-site/gcash_calamba.jpeg'),
+            'gcashLBQR'    => asset('giving-site/gcash_losbanos.jpeg'),
+            'gcashSPQR'    => asset('giving-site/gcash_sanpablo.jpeg'),
+            'gcashSCQR'    => asset('giving-site/gcash_stacruz.jpeg'),
         ];
 
         return Inertia::render('HomePage/Give', $data);
