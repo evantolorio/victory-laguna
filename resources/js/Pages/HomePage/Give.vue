@@ -42,10 +42,78 @@
     <!-- Content -->
     <div class="max-w-7xl mx-auto py-8 sm:px-6 h-screen">
       <div class="grid grid-cols-3">
-        <div class="bg-cover rounded shadow-md"
+
+        <!-- Alert Messages -->
+        <div v-if="payMayaGivingStatus == 'success'" class="col-span-3 rounded-lg mb-6 overflow-hidden">
+          <div class="px-6 py-6 bg-emerald-50">
+            <div class="flex">
+              <div class="">
+                <svg class="h-6 w-6 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-2">
+                <h1 class="text-base font-bold text-emerald-800">Giving Success</h1>
+                <p class="text-sm text-emerald-600 mt-2 mb-4">Giving through PayMaya is successful. Thank you for your generosity!</p>
+                <a @click.prevent="payMayaGivingStatus = ''"
+                  href="#!" class="text-sm text-emerald-800 font-semibold"
+                >
+                  Dismiss
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div v-if="payMayaGivingStatus == 'failure'" class="col-span-3 rounded-lg mb-6 overflow-hidden">
+          <div class="px-6 py-6 bg-rose-50">
+            <div class="flex">
+              <div class="">
+                <svg class="h-6 w-6 text-rose-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-2">
+                <h1 class="text-base font-bold text-rose-800">Giving Failed</h1>
+                <p class="text-sm text-rose-600 mt-2 mb-4">Giving through PayMaya failed. Please take note of your reference number and contact our finance officer for further details.</p>
+                <a @click.prevent="payMayaGivingStatus = ''"
+                  href="#!" class="text-sm text-rose-800 font-semibold"
+                >
+                  Dismiss
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div v-if="payMayaGivingStatus == 'cancel'" class="col-span-3 rounded-lg mb-6 overflow-hidden">
+          <div class="px-6 py-6 bg-amber-50">
+            <div class="flex">
+              <div class="">
+                <svg class="h-6 w-6 text-amber-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-2">
+                <h1 class="text-base font-bold text-amber-800">Giving Canceled</h1>
+                <p class="text-sm text-amber-600 mt-2 mb-4">Giving through PayMaya canceled.</p>
+                <a @click.prevent="payMayaGivingStatus = ''"
+                  href="#!" class="text-sm text-amber-800 font-semibold"
+                >
+                  Dismiss
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Giving Image -->
+        <div class="bg-cover rounded shadow-md grayscale"
           :style="{'background-image': givingImageUrl}"
         >
         </div>
+
+        <!-- Giving Input -->
         <div class="col-span-2 rounded-lg shadow-md ml-6 overflow-hidden">
           <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
             <div class="">
@@ -387,6 +455,7 @@
 
     data() {
       return {
+        payMayaGivingStatus:'',
         activeTab: 'general',
         giveProcessing: false,
         giveToCenter: '',
@@ -688,10 +757,15 @@
     mounted() {
       document.title = 'Give | Victory Laguna Giving Site';
 
-      // Check if ther's an init parameter
+      // Check if there's an init parameter
       let urlParams = this.getUrlParams();
       if (urlParams.hasOwnProperty('init')) {
         this.givingBreakdown[0]['typeOfGiving'] = urlParams['init'];
+      }
+
+      // Check if there's a status parameter
+      if (urlParams.hasOwnProperty('status')) {
+        this.payMayaGivingStatus = urlParams['status'];
       }
     }
 
