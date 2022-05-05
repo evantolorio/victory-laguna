@@ -14,15 +14,15 @@
         </div>
         <div>
           <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            </p>
+            <h1 class="text-base font-semibold">
+              We exist to Honor God and Make Disciples.
+            </h1>
           </div>
         </div>
         <div>
           <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
             <p>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              We desire to honor God in every area of life. Our starting point, goal, and motive is the honor of God. This is foundational for understanding why we do what we do. It is all about Him, not us.
             </p>
           </div>
         </div>
