@@ -381,6 +381,8 @@
                       <div class="col-span-6 mb-4">
                         <div class="flex justify-center">
                           <a class="button inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25  hover:bg-victory-blue/50 cursor-pointer"
+                            :href="centerDetails['gcashQR']"
+                            download
                           >
                             Save to Device
                           </a>
