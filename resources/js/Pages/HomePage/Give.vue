@@ -253,7 +253,6 @@
                       id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
                       <option value="PH">PH</option>
-                      <option value="US">US</option>
                     </select>
                   </div>
 
@@ -366,43 +365,71 @@
                   <div v-if="giveThruChannel == 'gcash'" 
                     class="grid grid-cols-6 gap-4"
                   >
-                    <div class="col-span-6 mx-auto">
-                      <img class="" :src="centerDetails['gcashQR']" alt="GCash QR Code">
-                    </div>
-                    <div class="col-span-1">
-                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 1</h1>
-                    </div>
-                    <div class="col-span-5">
-                      <p class="text-sm text-gray-600 inline-block align-bottom">Open the GCash app. Tap <b>Pay QR</b>.</p>
-                    </div>
-                    <div class="col-span-1">
-                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 2</h1>
-                    </div>
-                    <div class="col-span-5">
-                      <p class="text-sm text-gray-600 inline-block align-bottom">
-                        Scan or upload the QR code; check to see that you're giving to <b>{{ centerDetails['name'] }}</b>.
-                      </p>
-                    </div>
-                    <div class="col-span-1">
-                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 3</h1>
-                    </div>
-                    <div class="col-span-5">
-                      <p class="text-sm text-gray-600 inline-block align-bottom">
-                        Input the amount; tap <b>Next</b>. Review the details; tap <b>Pay</b>.
-                      </p>
-                    </div>
-                    <div class="col-span-1">
-                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 4</h1>
-                    </div>
-                    <div class="col-span-5">
-                      <p class="text-sm text-gray-600 inline-block align-bottom">
-                        Kindly upload the transaction slip of your giving at <a :href="`https://${centerDetails['givingAckLink']}`" target="_blank" class="text-indigo-600">{{ centerDetails['givingAckLink'] }}</a> or email at <a :href="`mailto:${centerDetails['email']}`" target="_blank" class="text-indigo-600">{{ centerDetails['email'] }}</a>, so we can properly acknowledge and account your giving.
-                      </p>
-                    </div>
+                    <!-- GCash -->
+                    <template v-if="giveToCenter == 'cabuyao' || giveToCenter == 'siniloan'">
+                      <!-- Coming Soon -->
+                      <div class="col-span-6">
+                        <div class="flex justify-center my-8">
+                          <h1>Giving through GCash for <b>{{ centerDetails['name'] }}</b> coming soon.</h1>
+                        </div>
+                      </div>
+                    </template>
+                    <template v-else>
+                      <div class="col-span-6 mx-auto">
+                        <img class="" :src="centerDetails['gcashQR']" alt="GCash QR Code">
+                      </div>
+                      <div class="col-span-6 mb-4">
+                        <div class="flex justify-center">
+                          <a class="button inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25  hover:bg-victory-blue/50 cursor-pointer"
+                          >
+                            Save to Device
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="text-xl font-medium text-gray-900 text-right">Step 1</h1>
+                      </div>
+                      <div class="col-span-5">
+                        <p class="text-sm text-gray-600 inline-block align-bottom">Save this QR code image on your device.</p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="text-xl font-medium text-gray-900 text-right">Step 2</h1>
+                      </div>
+                      <div class="col-span-5">
+                        <p class="text-sm text-gray-600 inline-block align-bottom">
+                          Open GCash app.
+                        </p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="text-xl font-medium text-gray-900 text-right">Step 3</h1>
+                      </div>
+                      <div class="col-span-5">
+                        <p class="text-sm text-gray-600 inline-block align-bottom">
+                          Select <b>Pay QR</b> and upload the QR code image.
+                        </p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="text-xl font-medium text-gray-900 text-right">Step 4</h1>
+                      </div>
+                      <div class="col-span-5">
+                        <p class="text-sm text-gray-600 inline-block align-bottom">
+                          Enter the amount. Click Submit.
+                        </p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="text-xl font-medium text-gray-900 text-right">Step 5</h1>
+                      </div>
+                      <div class="col-span-5">
+                        <p class="text-sm text-gray-600 inline-block align-bottom">
+                          Upload the transaction slip of your giving at  <a :href="`https://${centerDetails['givingAckLink']}`" target="_blank" class="text-indigo-600">{{ centerDetails['givingAckLink'] }}</a> or email at <a :href="`mailto:${centerDetails['email']}`" target="_blank" class="text-indigo-600">{{ centerDetails['email'] }}</a>, so we can properly acknowledge and account your giving. Thank you for your generosity.
+                        </p>
+                      </div>
+                    </template>
                   </div>
                   <div v-else
                     class="grid-cols-5 gap-6"
                   >
+                    <!-- PayMaya -->
                     <h1>PayMaya</h1>
                   </div>
                 </template>
@@ -549,7 +576,7 @@
 
         switch (selectedCenter) {
           case 'cabuyao':
-            centerDetails['name'] = 'Victory Calamba';
+            centerDetails['name'] = 'Victory Cabuyao';
             centerDetails['givingAckLink'] = 'bit.ly/vcalambaonlinegiving';
             centerDetails['email'] = 'cabuyao@victory.org.ph';
             centerDetails['gcashQR'] = '';
@@ -589,7 +616,7 @@
             break;
 
           case 'siniloan':
-            centerDetails['name'] = 'Victory Santa Cruz';
+            centerDetails['name'] = 'Victory Siniloan';
             centerDetails['givingAckLink'] = 'bit.ly/vsantacruzonlinegiving';
             centerDetails['email'] = 'siniloan@victory.org.ph';
             centerDetails['gcashQR'] = '';
