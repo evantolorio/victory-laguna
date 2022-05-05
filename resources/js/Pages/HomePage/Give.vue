@@ -108,7 +108,7 @@
         </div>
 
         <!-- Giving Image -->
-        <div class="bg-cover rounded shadow-md grayscale"
+        <div class="bg-cover rounded shadow-md"
           :style="{'background-image': givingImageUrl}"
         >
         </div>
@@ -381,8 +381,8 @@
                       <div class="col-span-6 mb-4">
                         <div class="flex justify-center">
                           <a class="button inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25  hover:bg-victory-blue/50 cursor-pointer"
-                            :href="centerDetails['gcashQR']"
-                            download
+                            href="#!"
+                            @click.prevent="downloadGCashQRCode(centerDetails['gcashQR'])"
                           >
                             Save to Device
                           </a>
@@ -638,6 +638,21 @@
     methods: {
       goToPage(url) {
         this.$inertia.visit(url);
+      },
+
+      downloadGCashQRCode(imageSrc) {
+        axios({
+          url: imageSrc,
+          method:'GET',
+          responseType: 'blob'
+        }).then((response) => {
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', `gcash_${this.giveToCenter}`);
+          document.body.appendChild(link);
+          link.click();
+        })
       },
 
       expoundTypeOfGiving(slug) {
