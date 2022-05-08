@@ -376,7 +376,12 @@
                     </template>
                     <template v-else>
                       <div class="col-span-6 mx-auto">
-                        <img class="" :src="centerDetails['gcashQR']" alt="GCash QR Code">
+                        <div class="block">
+                          <img :src="centerDetails['gcashQR']"
+                            style="height:350px;"
+                            alt="GCash QR Code"
+                          >
+                        </div>
                       </div>
                       <div class="col-span-6 mb-4">
                         <div class="flex justify-center">
@@ -648,6 +653,7 @@
         }).then((response) => {
           const url = window.URL.createObjectURL(new Blob([response.data]));
           const link = document.createElement('a');
+          
           link.href = url;
           link.setAttribute('download', `gcash_${this.giveToCenter}`);
           document.body.appendChild(link);

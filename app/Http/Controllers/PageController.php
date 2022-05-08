@@ -17,9 +17,9 @@ class PageController extends Controller
     public function index(Request $request)
     {
         $data = [
-            'homeImgUrl' => asset('giving-site/homepage.png'),
-            'phoneUrl'   => asset('giving-site/phone.png'),
-            'logoUrl'    => asset('giving-site/victory_blue.png'),
+            'homeImgUrl' => asset('images/homepage.png'),
+            'phoneUrl'   => asset('images/phone.png'),
+            'logoUrl'    => asset('images/victory_blue.png'),
         ];
 
         return Inertia::render('HomePage/Index', $data);
@@ -36,16 +36,16 @@ class PageController extends Controller
         $data = [
             'appUrl'       => env('APP_URL'),
             'payMayaUrl'   => env('PAYMAYA_URL'),
-            'logoUrl'      => asset('giving-site/victory_blue.png'),
-            'givingImgUrl' => asset('giving-site/giving_updated.jpg'),
+            'logoUrl'      => asset('images/victory_blue.png'),
+            'givingImgUrl' => asset('images/giving_updated.jpeg'),
             'pkCAL'        => base64_encode(env('PAYMAYA_PK_CAL') . ':'),
             'pkLB'         => base64_encode(env('PAYMAYA_PK_LB') . ':'),
             'pkSP'         => base64_encode(env('PAYMAYA_PK_SP') . ':'),
             'pkSC'         => base64_encode(env('PAYMAYA_PK_SC') . ':'),
-            'gcashCALQR'   => asset('giving-site/gcash_calamba.jpeg'),
-            'gcashLBQR'    => asset('giving-site/gcash_losbanos.jpeg'),
-            'gcashSPQR'    => asset('giving-site/gcash_sanpablo.jpeg'),
-            'gcashSCQR'    => asset('giving-site/gcash_stacruz.jpeg'),
+            'gcashCALQR'   => asset('images/gcash_calamba.jpeg'),
+            'gcashLBQR'    => asset('images/gcash_losbanos.jpeg'),
+            'gcashSPQR'    => asset('images/gcash_sanpablo.png'),
+            'gcashSCQR'    => asset('images/gcash_stacruz.jpeg'),
         ];
 
         return Inertia::render('HomePage/Give', $data);
@@ -60,8 +60,8 @@ class PageController extends Controller
     public function whoWeAre(Request $request)
     {
         $data = [
-            'homeImgUrl' => asset('giving-site/homepage.png'),
-            'logoUrl'    => asset('giving-site/victory_blue.png'),
+            'homeImgUrl' => asset('images/homepage.png'),
+            'logoUrl'    => asset('images/victory_blue.png'),
         ];
 
         return Inertia::render('HomePage/WhoWeAre', $data);
@@ -76,8 +76,8 @@ class PageController extends Controller
     public function contactUs(Request $request)
     {
         $data = [
-            'homeImgUrl' => asset('giving-site/homepage.png'),
-            'logoUrl'    => asset('giving-site/victory_blue.png'),
+            'homeImgUrl' => asset('images/homepage.png'),
+            'logoUrl'    => asset('images/victory_blue.png'),
         ];
 
         return Inertia::render('HomePage/ContactUs', $data);

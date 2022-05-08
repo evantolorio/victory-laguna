@@ -20556,46 +20556,49 @@ var _hoisted_127 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVN
 var _hoisted_128 = {
   "class": "col-span-6 mx-auto"
 };
-var _hoisted_129 = ["src"];
-var _hoisted_130 = {
+var _hoisted_129 = {
+  "class": "block"
+};
+var _hoisted_130 = ["src"];
+var _hoisted_131 = {
   "class": "col-span-6 mb-4"
 };
-var _hoisted_131 = {
+var _hoisted_132 = {
   "class": "flex justify-center"
 };
 
-var _hoisted_132 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 1</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\">Save this QR code image on your device.</p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 2</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Open GCash app. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 3</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Select <b>Pay QR</b> and upload the QR code image. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 4</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Enter the amount. Click Submit. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 5</h1></div>", 9);
+var _hoisted_133 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 1</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\">Save this QR code image on your device.</p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 2</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Open GCash app. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 3</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Select <b>Pay QR</b> and upload the QR code image. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 4</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Enter the amount. Click Submit. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 5</h1></div>", 9);
 
-var _hoisted_141 = {
+var _hoisted_142 = {
   "class": "col-span-5"
 };
-var _hoisted_142 = {
+var _hoisted_143 = {
   "class": "text-sm text-gray-600 inline-block align-bottom"
 };
 
-var _hoisted_143 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Upload the transaction slip of your giving at ");
+var _hoisted_144 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Upload the transaction slip of your giving at ");
 
-var _hoisted_144 = ["href"];
+var _hoisted_145 = ["href"];
 
-var _hoisted_145 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" or email at ");
+var _hoisted_146 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" or email at ");
 
-var _hoisted_146 = ["href"];
+var _hoisted_147 = ["href"];
 
-var _hoisted_147 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(", so we can properly acknowledge and account your giving. Thank you for your generosity. ");
+var _hoisted_148 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(", so we can properly acknowledge and account your giving. Thank you for your generosity. ");
 
-var _hoisted_148 = {
+var _hoisted_149 = {
   key: 1,
   "class": "grid-cols-5 gap-6"
 };
 
-var _hoisted_149 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "PayMaya", -1
+var _hoisted_150 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "PayMaya", -1
 /* HOISTED */
 );
 
-var _hoisted_150 = {
+var _hoisted_151 = {
   "class": "px-4 py-3 bg-gray-50 text-right sm:px-6"
 };
-var _hoisted_151 = ["disabled"];
+var _hoisted_152 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navigation "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     "class": "h-16 w-auto",
@@ -20825,37 +20828,39 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_128, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    "class": "",
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_128, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_129, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $options.centerDetails['gcashQR'],
+    style: {
+      "height": "350px"
+    },
     alt: "GCash QR Code"
   }, null, 8
   /* PROPS */
-  , _hoisted_129)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_130, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_131, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  , _hoisted_130)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_131, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_132, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "button inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25 hover:bg-victory-blue/50 cursor-pointer",
     href: "#!",
     onClick: _cache[18] || (_cache[18] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.downloadGCashQRCode($options.centerDetails['gcashQR']);
     }, ["prevent"]))
-  }, " Save to Device ")])]), _hoisted_132, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_141, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_142, [_hoisted_143, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, " Save to Device ")])]), _hoisted_133, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_142, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_143, [_hoisted_144, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "https://".concat($options.centerDetails['givingAckLink']),
     target: "_blank",
     "class": "text-indigo-600"
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['givingAckLink']), 9
   /* TEXT, PROPS */
-  , _hoisted_144), _hoisted_145, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  , _hoisted_145), _hoisted_146, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "mailto:".concat($options.centerDetails['email']),
     target: "_blank",
     "class": "text-indigo-600"
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['email']), 9
   /* TEXT, PROPS */
-  , _hoisted_146), _hoisted_147])])], 64
+  , _hoisted_147), _hoisted_148])])], 64
   /* STABLE_FRAGMENT */
-  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_148, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" PayMaya "), _hoisted_149]))], 2112
+  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_149, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" PayMaya "), _hoisted_150]))], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   ))])], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_150, [$data.activeTab == 'general' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_151, [$data.activeTab == 'general' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
     type: "button",
     "class": "inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
@@ -20879,7 +20884,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["prevent"]))
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.giveButtonText), 11
   /* TEXT, CLASS, PROPS */
-  , _hoisted_151)], 64
+  , _hoisted_152)], 64
   /* STABLE_FRAGMENT */
   ))])])])])]);
 }
