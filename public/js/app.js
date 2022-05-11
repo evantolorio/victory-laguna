@@ -19479,8 +19479,8 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia.visit(url);
     },
     downloadGCashQRCode: function downloadGCashQRCode(imageSrc) {
-      var _this2 = this;
-
+      var parsedUrl = imageSrc.split('/');
+      var imageName = parsedUrl[parsedUrl.length - 1];
       axios({
         url: imageSrc,
         method: 'GET',
@@ -19489,7 +19489,7 @@ __webpack_require__.r(__webpack_exports__);
         var url = window.URL.createObjectURL(new Blob([response.data]));
         var link = document.createElement('a');
         link.href = url;
-        link.setAttribute('download', "gcash_".concat(_this2.giveToCenter));
+        link.setAttribute('download', imageName);
         document.body.appendChild(link);
         link.click();
       });
@@ -20875,7 +20875,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[20] || (_cache[20] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $data.activeTab = 'general';
     }, ["prevent"]))
-  }, " Back "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, " Back "), $data.giveThruChannel == 'credit_debit' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 0,
     type: "submit",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["inline-flex justify-center ml-3 py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled", [$data.giveProcessing ? 'disabled:bg-victory-blue/75 cursor-progress' : '']]),
     disabled: $data.giveProcessing,
@@ -20884,7 +20885,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["prevent"]))
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.giveButtonText), 11
   /* TEXT, CLASS, PROPS */
-  , _hoisted_152)], 64
+  , _hoisted_152)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
   /* STABLE_FRAGMENT */
   ))])])])])]);
 }

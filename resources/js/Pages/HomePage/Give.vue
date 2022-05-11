@@ -460,7 +460,8 @@
               >
                 Back
               </button>
-              <button type="submit" 
+              <button v-if="giveThruChannel == 'credit_debit'"
+                type="submit" 
                 class="inline-flex justify-center ml-3 py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled"
                 :class="[giveProcessing ? 'disabled:bg-victory-blue/75 cursor-progress' : '']"
                 :disabled="giveProcessing"
@@ -646,6 +647,9 @@
       },
 
       downloadGCashQRCode(imageSrc) {
+        let parsedUrl = imageSrc.split('/');
+        let imageName = parsedUrl[parsedUrl.length-1];
+
         axios({
           url: imageSrc,
           method:'GET',
@@ -655,7 +659,7 @@
           const link = document.createElement('a');
           
           link.href = url;
-          link.setAttribute('download', `gcash_${this.giveToCenter}`);
+          link.setAttribute('download', imageName);
           document.body.appendChild(link);
           link.click();
         })
