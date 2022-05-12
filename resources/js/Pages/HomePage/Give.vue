@@ -220,35 +220,40 @@
                     <h1 class="text-center font-bold text-gray-900">{{ centerDetails['name'] }}</h1>
                   </div>
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label>
+                    <label for="first-name" class="block text-sm font-medium text-gray-700">First Name *</label>
                     <input v-model="firstName"
-                      type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      type="text" name="first-name" id="first-name" autocomplete="given-name" 
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     >
+                    <!-- <span class="text-sm">
+                      Lorem ipsum dolor
+                    </span> -->
                   </div>
 
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="last-name" class="block text-sm font-medium text-gray-700">Last Name</label>
+                    <label for="last-name" class="block text-sm font-medium text-gray-700">Last Name *</label>
                     <input v-model="lastName"
-                      type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      type="text" name="last-name" id="last-name" autocomplete="family-name" 
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     >
                   </div>
 
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="mobile-no" class="block text-sm font-medium text-gray-700">Mobile Number</label>
+                    <label for="mobile-no" class="block text-sm font-medium text-gray-700">Mobile Number *</label>
                     <input v-model="mobileNo"
                       type="text" name="mobile-no" id="mobile-no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     >
                   </div>
 
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="email-add" class="block text-sm font-medium text-gray-700">Email</label>
+                    <label for="email-add" class="block text-sm font-medium text-gray-700">Email *</label>
                     <input v-model="email"
                       type="text" name="email-add" id="email-add" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     >
                   </div>
 
                   <div class="col-span-6 sm:col-span-1">
-                    <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                    <label for="country" class="block text-sm font-medium text-gray-700">Country *</label>
                     <select v-model="country"
                       id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
@@ -282,23 +287,29 @@
                   <!-- Giving Breakdown -->
                   <template v-for="(breakdown, index) in givingBreakdown" :key="index">
                     <div class="col-span-6">
-                        <div class="grid grid-cols-7 gap-4">
-                          <div class="col-span-6 sm:col-span-1">
-                          <label for="currency" class="block text-sm font-medium text-gray-700">Currency</label>
-                          <select v-model="currency"
-                            id="currency" name="currency" autocomplete="currency-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                          >
-                            <option>PHP</option>
-                            <option>USD</option>
-                          </select>
-                        </div>
-                        
-                        <div class="col-span-6 sm:col-span-1">
-                          <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
-                          <input v-model="breakdown.amount"
-                            type="text" name="amount" id="amount" autocomplete="total-amount" 
-                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                          >
+                      <div class="grid grid-cols-7 gap-4">
+                        <div class="col-start-2 col-span-6 sm:col-span-2">
+                          <label for="price" class="block text-sm font-medium text-gray-700">Amount</label>
+                          <div class="mt-1 relative rounded-md shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                              <span v-if="currency == 'PHP'" class="text-gray-500 sm:text-sm"> ₱ </span>
+                              <span v-else class="text-gray-500 sm:text-sm"> $ </span>
+                            </div>
+                            <input v-model="breakdown.amount"
+                              type="text" name="price" id="price" 
+                              class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0"
+                            >
+                            <div class="absolute inset-y-0 right-0 flex items-center">
+                              <label for="currency" class="sr-only">Currency</label>
+                              <select v-model="currency" 
+                                id="currency" name="currency" 
+                                class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
+                              >
+                                <option>PHP</option>
+                                <option>USD</option>
+                              </select>
+                            </div>
+                          </div>
                         </div>
 
                         <div class="col-span-6 sm:col-span-2">
@@ -346,15 +357,14 @@
                     </div>
                   </template>
 
-                  <div class="col-span-6 sm:col-span-1">
-                    <div class="flex justify-end">
-                      <h1 class="text-sm font-medium text-gray-500">Total</h1>
-                    </div>
-                  </div>
-
-                  <div class="col-span-6 sm:col-span-1">
-                    <div class="flex items-center">
-                      <span class="text-sm font-semibold text-gray-900"> {{ formattedTotalAmount }} </span>
+                  <div class="col-span-6">
+                    <div class="grid grid-cols-7 gap-4">
+                      <div class="col-span-6 sm:col-span-2">
+                        <div class="flex items-center">
+                          <h1 class="text-sm font-medium text-gray-500">Total</h1>
+                          <span class="ml-2 text-sm font-semibold text-gray-900"> {{ formattedTotalAmount }} </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
