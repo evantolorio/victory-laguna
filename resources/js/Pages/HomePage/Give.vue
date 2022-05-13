@@ -224,10 +224,11 @@
                     <input v-model="firstName"
                       type="text" name="first-name" id="first-name" autocomplete="given-name" 
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      :class="(errorValidation.firstName) ? 'border-red-600' : ''"
                     >
-                    <!-- <span class="text-sm">
-                      Lorem ipsum dolor
-                    </span> -->
+                    <span v-show="errorValidation.firstName" class="text-xs text-red-500">
+                      Please provide a First Name.
+                    </span>
                   </div>
 
                   <div class="col-span-6 sm:col-span-3">
@@ -235,21 +236,35 @@
                     <input v-model="lastName"
                       type="text" name="last-name" id="last-name" autocomplete="family-name" 
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      :class="(errorValidation.lastName) ? 'border-red-600' : ''"
                     >
+                    <span v-show="errorValidation.lastName" class="text-xs text-red-500">
+                      Please provide a Last Name.
+                    </span>
                   </div>
 
                   <div class="col-span-6 sm:col-span-3">
                     <label for="mobile-no" class="block text-sm font-medium text-gray-700">Mobile Number *</label>
                     <input v-model="mobileNo"
-                      type="text" name="mobile-no" id="mobile-no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      type="text" name="mobile-no" id="mobile-no" 
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      :class="(errorValidation.mobileNo) ? 'border-red-600' : ''"
                     >
+                    <span v-show="errorValidation.mobileNo" class="text-xs text-red-500">
+                      Please provide a Mobile Number.
+                    </span>
                   </div>
 
                   <div class="col-span-6 sm:col-span-3">
                     <label for="email-add" class="block text-sm font-medium text-gray-700">Email *</label>
                     <input v-model="email"
-                      type="text" name="email-add" id="email-add" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      type="text" name="email-add" id="email-add" autocomplete="email" 
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      :class="(errorValidation.email) ? 'border-red-600' : ''"
                     >
+                    <span v-show="errorValidation.email" class="text-xs text-red-500">
+                      Please provide an Email Address.
+                    </span>
                   </div>
 
                   <div class="col-span-6 sm:col-span-1">
@@ -298,6 +313,8 @@
                             <input v-model="breakdown.amount"
                               type="text" name="price" id="price" 
                               class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0"
+                              :class="(breakdown.errorValidation.amount) ? 'border-red-600' : ''"
+                              @keyup="checkValidation(index, 'amount')"
                             >
                             <div class="absolute inset-y-0 right-0 flex items-center">
                               <label for="currency" class="sr-only">Currency</label>
@@ -310,6 +327,9 @@
                               </select>
                             </div>
                           </div>
+                          <span v-show="breakdown.errorValidation.amount" class="text-xs text-red-500">
+                            Please provide amount.
+                          </span>
                         </div>
 
                         <div class="col-span-6 sm:col-span-2">
@@ -335,7 +355,12 @@
                           <input v-model="breakdown.others"
                             type="text" name="others" id="others"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            :class="(breakdown.errorValidation.others) ? 'border-red-600' : ''"
+                            @keyup="checkValidation(index, 'others')"
                           >
+                          <span v-show="breakdown.errorValidation.others" class="text-xs text-red-500">
+                            Please provide the purpose of giving.
+                          </span>
                         </div>
 
                         <div v-if="index > 0"
@@ -529,10 +554,38 @@
           {
             'amount': 0.0,
             'typeOfGiving': 'tithes_and_offering',
-            'others': ''
+            'others': '',
+            'errorValidation': {
+              'amount': false,
+              'others': false
+            }
           }
-        ]
+        ],
+        errorValidation: {
+          'firstName': false,
+          'lastName': false,
+          'mobileNo': false,
+          'email': false
+        }
       }
+    },
+
+    watch: {
+      firstName(newValue, oldValue) {
+        if (newValue) this.errorValidation.firstName = false;
+      },
+
+      lastName(newValue, oldValue) {
+        if (newValue) this.errorValidation.lastName = false;
+      },
+
+      mobileNo(newValue, oldValue) {
+        if (newValue) this.errorValidation.mobileNo = false;
+      },
+
+      email(newValue, oldValue) {
+        if (newValue) this.errorValidation.email = false;
+      },
     },
 
     computed: {
@@ -657,6 +710,7 @@
       },
 
       downloadGCashQRCode(imageSrc) {
+        // Force download GCash QR code image
         let parsedUrl = imageSrc.split('/');
         let imageName = parsedUrl[parsedUrl.length-1];
 
@@ -676,6 +730,8 @@
       },
 
       expoundTypeOfGiving(slug) {
+        // Transform slug value to readable data to be
+        // passed on to Maya payment gateway
         switch (slug) {
           case 'benevolence':
             return 'Benevolence';
@@ -712,20 +768,28 @@
       },
 
       addGiving() {
+        // Add data to givingBreakdown array
         const breakdown = {
           'amount': 0.0,
           'typeOfGiving': 'tithes_and_offering',
-          'others': ''
+          'others': '',
+          'errorValidation': {
+            'amount': false,
+            'others': false
+          }
         };
 
         this.givingBreakdown.push(breakdown);
       },
 
       removeGiving(index) {
+        // Remove data from givingBreakdown array
         this.givingBreakdown.splice(index,1);
       },
 
       getUrlParams() {
+        // transform URL paramaters to object for
+        // easier retrieval of parameters
         let vars = {};
         let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
             vars[key] = value;
@@ -735,6 +799,7 @@
       },
 
       parseReferenceNumber(date) {
+        // Create unique reference number based on key transaction info
         let selectedCenter = this.giveToCenter;
         let center = '';
         let month = date.getMonth() + 1;
@@ -772,14 +837,66 @@
         month = (month < 10) ? '0'+month : month;
         day   = (day < 10) ? '0'+day : day;
         
-
         return `${center}-${month}${day}${date.getFullYear()}-${date.getTime()}`;
 
       },
 
+      checkValidation(index, property) {
+        // Check validation for input types formed from 
+        // givingBreakdown array after keyup event
+        if (!this.givingBreakdown[index].errorValidation[property]) return;
+
+        if (this.givingBreakdown[index][property])
+          this.givingBreakdown[index].errorValidation[property] = false;
+      },
+
+      validateGivingInfo() {
+        // Validate giving info before form submission
+        let errorFound = false;
+
+        if (!this.firstName) {
+          this.errorValidation.firstName = true;
+          errorFound = true;
+        }
+        if (!this.lastName) {
+          this.errorValidation.lastName = true;
+          errorFound = true;
+        }
+        if (!this.mobileNo) {
+          this.errorValidation.mobileNo = true;
+          errorFound = true;
+        }
+        if (!this.email) {
+          this.errorValidation.email = true;
+          errorFound = true;
+        }
+
+        this.givingBreakdown.forEach(breakdown => {
+          if (!breakdown.amount) { 
+            breakdown.errorValidation.amount = true;
+            errorFound = true;
+          }
+          if (breakdown.typeOfGiving == 'others' && !breakdown.others) {
+            breakdown.errorValidation.others = true;
+            errorFound = true;
+          }
+        });
+        
+        return errorFound;
+
+      },
+
       give() {
+        // Prepare form submission and pass data
+        // to Maya payment gateway
         this.giveProcessing = true;
         let centerDetails = this.centerDetails;
+        let errorFound = this.validateGivingInfo();
+
+        if (errorFound) {
+          this.giveProcessing = false;
+          return;
+        }
 
         const options = {
           method: 'POST',
@@ -809,7 +926,7 @@
         fetch(`${this.payMayaUrl}`, options)
           .then(response => response.json())
           .then((response) => {
-            // Redirect to PayMaya Gateway
+            // Redirect to Maya Gateway
             window.location.href = response['redirectUrl'];
           })
           .catch(err => console.error(err));

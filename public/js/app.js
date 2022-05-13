@@ -19366,9 +19366,33 @@ __webpack_require__.r(__webpack_exports__);
       givingBreakdown: [{
         'amount': 0.0,
         'typeOfGiving': 'tithes_and_offering',
-        'others': ''
-      }]
+        'others': '',
+        'errorValidation': {
+          'amount': false,
+          'others': false
+        }
+      }],
+      errorValidation: {
+        'firstName': false,
+        'lastName': false,
+        'mobileNo': false,
+        'email': false
+      }
     };
+  },
+  watch: {
+    firstName: function firstName(newValue, oldValue) {
+      if (newValue) this.errorValidation.firstName = false;
+    },
+    lastName: function lastName(newValue, oldValue) {
+      if (newValue) this.errorValidation.lastName = false;
+    },
+    mobileNo: function mobileNo(newValue, oldValue) {
+      if (newValue) this.errorValidation.mobileNo = false;
+    },
+    email: function email(newValue, oldValue) {
+      if (newValue) this.errorValidation.email = false;
+    }
   },
   computed: {
     givingImageUrl: function givingImageUrl() {
@@ -19479,6 +19503,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia.visit(url);
     },
     downloadGCashQRCode: function downloadGCashQRCode(imageSrc) {
+      // Force download GCash QR code image
       var parsedUrl = imageSrc.split('/');
       var imageName = parsedUrl[parsedUrl.length - 1];
       axios({
@@ -19495,6 +19520,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     expoundTypeOfGiving: function expoundTypeOfGiving(slug) {
+      // Transform slug value to readable data to be
+      // passed on to Maya payment gateway
       switch (slug) {
         case 'benevolence':
           return 'Benevolence';
@@ -19527,17 +19554,25 @@ __webpack_require__.r(__webpack_exports__);
       return;
     },
     addGiving: function addGiving() {
+      // Add data to givingBreakdown array
       var breakdown = {
         'amount': 0.0,
         'typeOfGiving': 'tithes_and_offering',
-        'others': ''
+        'others': '',
+        'errorValidation': {
+          'amount': false,
+          'others': false
+        }
       };
       this.givingBreakdown.push(breakdown);
     },
     removeGiving: function removeGiving(index) {
+      // Remove data from givingBreakdown array
       this.givingBreakdown.splice(index, 1);
     },
     getUrlParams: function getUrlParams() {
+      // transform URL paramaters to object for
+      // easier retrieval of parameters
       var vars = {};
       var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
         vars[key] = value;
@@ -19545,6 +19580,7 @@ __webpack_require__.r(__webpack_exports__);
       return vars;
     },
     parseReferenceNumber: function parseReferenceNumber(date) {
+      // Create unique reference number based on key transaction info
       var selectedCenter = this.giveToCenter;
       var center = '';
       var month = date.getMonth() + 1;
@@ -19583,9 +19619,61 @@ __webpack_require__.r(__webpack_exports__);
       day = day < 10 ? '0' + day : day;
       return "".concat(center, "-").concat(month).concat(day).concat(date.getFullYear(), "-").concat(date.getTime());
     },
+    checkValidation: function checkValidation(index, property) {
+      // Check validation for input types formed from 
+      // givingBreakdown array after keyup event
+      if (!this.givingBreakdown[index].errorValidation[property]) return;
+      if (this.givingBreakdown[index][property]) this.givingBreakdown[index].errorValidation[property] = false;
+    },
+    validateGivingInfo: function validateGivingInfo() {
+      // Validate giving info before form submission
+      var errorFound = false;
+
+      if (!this.firstName) {
+        this.errorValidation.firstName = true;
+        errorFound = true;
+      }
+
+      if (!this.lastName) {
+        this.errorValidation.lastName = true;
+        errorFound = true;
+      }
+
+      if (!this.mobileNo) {
+        this.errorValidation.mobileNo = true;
+        errorFound = true;
+      }
+
+      if (!this.email) {
+        this.errorValidation.email = true;
+        errorFound = true;
+      }
+
+      this.givingBreakdown.forEach(function (breakdown) {
+        if (!breakdown.amount) {
+          breakdown.errorValidation.amount = true;
+          errorFound = true;
+        }
+
+        if (breakdown.typeOfGiving == 'others' && !breakdown.others) {
+          breakdown.errorValidation.others = true;
+          errorFound = true;
+        }
+      });
+      return errorFound;
+    },
     give: function give() {
+      // Prepare form submission and pass data
+      // to Maya payment gateway
       this.giveProcessing = true;
       var centerDetails = this.centerDetails;
+      var errorFound = this.validateGivingInfo();
+
+      if (errorFound) {
+        this.giveProcessing = false;
+        return;
+      }
+
       var options = {
         method: 'POST',
         headers: {
@@ -19621,7 +19709,7 @@ __webpack_require__.r(__webpack_exports__);
       fetch("".concat(this.payMayaUrl), options).then(function (response) {
         return response.json();
       }).then(function (response) {
-        // Redirect to PayMaya Gateway
+        // Redirect to Maya Gateway
         window.location.href = response['redirectUrl'];
       })["catch"](function (err) {
         return console.error(err);
@@ -20352,69 +20440,81 @@ var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_73 = {
+  "class": "text-xs text-red-500"
+};
+var _hoisted_74 = {
   "class": "col-span-6 sm:col-span-3"
 };
 
-var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "last-name",
   "class": "block text-sm font-medium text-gray-700"
 }, "Last Name *", -1
 /* HOISTED */
 );
 
-var _hoisted_75 = {
+var _hoisted_76 = {
+  "class": "text-xs text-red-500"
+};
+var _hoisted_77 = {
   "class": "col-span-6 sm:col-span-3"
 };
 
-var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "mobile-no",
   "class": "block text-sm font-medium text-gray-700"
 }, "Mobile Number *", -1
 /* HOISTED */
 );
 
-var _hoisted_77 = {
+var _hoisted_79 = {
+  "class": "text-xs text-red-500"
+};
+var _hoisted_80 = {
   "class": "col-span-6 sm:col-span-3"
 };
 
-var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "email-add",
   "class": "block text-sm font-medium text-gray-700"
 }, "Email *", -1
 /* HOISTED */
 );
 
-var _hoisted_79 = {
+var _hoisted_82 = {
+  "class": "text-xs text-red-500"
+};
+var _hoisted_83 = {
   "class": "col-span-6 sm:col-span-1"
 };
 
-var _hoisted_80 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "country",
   "class": "block text-sm font-medium text-gray-700"
 }, "Country *", -1
 /* HOISTED */
 );
 
-var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "PH"
 }, "PH", -1
 /* HOISTED */
 );
 
-var _hoisted_82 = [_hoisted_81];
+var _hoisted_86 = [_hoisted_85];
 
-var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-span-6 sm:col-span-6 mt-4\"><div class=\"flex items-center\"><h1 class=\"text font-medium text-gray-900 mr-2\">Type of Giving</h1><svg class=\"h-5 w-5 text-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\"><path fill-rule=\"evenodd\" d=\"M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z\" clip-rule=\"evenodd\"></path></svg></div></div>", 1);
+var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-span-6 sm:col-span-6 mt-4\"><div class=\"flex items-center\"><h1 class=\"text font-medium text-gray-900 mr-2\">Type of Giving</h1><svg class=\"h-5 w-5 text-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\"><path fill-rule=\"evenodd\" d=\"M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z\" clip-rule=\"evenodd\"></path></svg></div></div>", 1);
 
-var _hoisted_84 = {
+var _hoisted_88 = {
   "class": "col-span-6 sm:col-span-6"
 };
-var _hoisted_85 = {
+var _hoisted_89 = {
   "class": "flex items-center"
 };
 
-var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Giving ");
+var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Giving ");
 
-var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_91 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   "class": "ml-2 h-5 w-5 text-victory-blue",
   xmlns: "http://www.w3.org/2000/svg",
   fill: "none",
@@ -20429,101 +20529,107 @@ var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_88 = [_hoisted_86, _hoisted_87];
-var _hoisted_89 = {
+var _hoisted_92 = [_hoisted_90, _hoisted_91];
+var _hoisted_93 = {
   "class": "grid grid-cols-7 gap-4"
 };
-var _hoisted_90 = {
+var _hoisted_94 = {
   "class": "col-start-2 col-span-6 sm:col-span-2"
 };
 
-var _hoisted_91 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_95 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "price",
   "class": "block text-sm font-medium text-gray-700"
 }, "Amount", -1
 /* HOISTED */
 );
 
-var _hoisted_92 = {
+var _hoisted_96 = {
   "class": "mt-1 relative rounded-md shadow-sm"
 };
-var _hoisted_93 = {
+var _hoisted_97 = {
   "class": "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
 };
-var _hoisted_94 = {
+var _hoisted_98 = {
   key: 0,
   "class": "text-gray-500 sm:text-sm"
 };
-var _hoisted_95 = {
+var _hoisted_99 = {
   key: 1,
   "class": "text-gray-500 sm:text-sm"
 };
-var _hoisted_96 = ["onUpdate:modelValue"];
-var _hoisted_97 = {
+var _hoisted_100 = ["onUpdate:modelValue", "onKeyup"];
+var _hoisted_101 = {
   "class": "absolute inset-y-0 right-0 flex items-center"
 };
 
-var _hoisted_98 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "currency",
   "class": "sr-only"
 }, "Currency", -1
 /* HOISTED */
 );
 
-var _hoisted_99 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "PHP", -1
+var _hoisted_103 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "PHP", -1
 /* HOISTED */
 );
 
-var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "USD", -1
+var _hoisted_104 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "USD", -1
 /* HOISTED */
 );
 
-var _hoisted_101 = [_hoisted_99, _hoisted_100];
-var _hoisted_102 = {
+var _hoisted_105 = [_hoisted_103, _hoisted_104];
+var _hoisted_106 = {
+  "class": "text-xs text-red-500"
+};
+var _hoisted_107 = {
   "class": "col-span-6 sm:col-span-2"
 };
 
-var _hoisted_103 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_108 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "category",
   "class": "block text-sm font-medium text-gray-700"
 }, "Type of Giving", -1
 /* HOISTED */
 );
 
-var _hoisted_104 = ["onUpdate:modelValue"];
+var _hoisted_109 = ["onUpdate:modelValue"];
 
-var _hoisted_105 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"tithes_and_offering\">Tithes and Offering</option><option value=\"benevolence\">Benevolence</option><option value=\"local_building\">Local Building Fund</option><option value=\"missions\">Missions</option><option value=\"en_building\">Every Nation Building</option><option value=\"en_campus\">Every Nation Campus</option><option value=\"real_life\">Real LIFE Foundation</option><option value=\"others\">Others</option>", 8);
+var _hoisted_110 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"tithes_and_offering\">Tithes and Offering</option><option value=\"benevolence\">Benevolence</option><option value=\"local_building\">Local Building Fund</option><option value=\"missions\">Missions</option><option value=\"en_building\">Every Nation Building</option><option value=\"en_campus\">Every Nation Campus</option><option value=\"real_life\">Real LIFE Foundation</option><option value=\"others\">Others</option>", 8);
 
-var _hoisted_113 = [_hoisted_105];
-var _hoisted_114 = {
+var _hoisted_118 = [_hoisted_110];
+var _hoisted_119 = {
   "class": "col-span-6 sm:col-span-2"
 };
 
-var _hoisted_115 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_120 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "others",
   "class": "block text-sm font-medium text-gray-700"
 }, " ", -1
 /* HOISTED */
 );
 
-var _hoisted_116 = ["onUpdate:modelValue"];
-var _hoisted_117 = {
+var _hoisted_121 = ["onUpdate:modelValue", "onKeyup"];
+var _hoisted_122 = {
+  "class": "text-xs text-red-500"
+};
+var _hoisted_123 = {
   key: 0,
   "class": "col-span-6 sm:col-span-1"
 };
-var _hoisted_118 = {
+var _hoisted_124 = {
   "class": "grid content-center h-full"
 };
 
-var _hoisted_119 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_125 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "block"
 }, " ", -1
 /* HOISTED */
 );
 
-var _hoisted_120 = ["onClick"];
+var _hoisted_126 = ["onClick"];
 
-var _hoisted_121 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+var _hoisted_127 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
   "fill-rule": "evenodd",
   d: "M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z",
   "clip-rule": "evenodd"
@@ -20531,90 +20637,90 @@ var _hoisted_121 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElemen
 /* HOISTED */
 );
 
-var _hoisted_122 = [_hoisted_121];
-var _hoisted_123 = {
+var _hoisted_128 = [_hoisted_127];
+var _hoisted_129 = {
   "class": "col-span-6"
 };
-var _hoisted_124 = {
+var _hoisted_130 = {
   "class": "grid grid-cols-7 gap-4"
 };
-var _hoisted_125 = {
+var _hoisted_131 = {
   "class": "col-span-6 sm:col-span-2"
 };
-var _hoisted_126 = {
+var _hoisted_132 = {
   "class": "flex items-center"
 };
 
-var _hoisted_127 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+var _hoisted_133 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "text-sm font-medium text-gray-500"
 }, "Total", -1
 /* HOISTED */
 );
 
-var _hoisted_128 = {
+var _hoisted_134 = {
   "class": "ml-2 text-sm font-semibold text-gray-900"
 };
-var _hoisted_129 = {
+var _hoisted_135 = {
   key: 0,
   "class": "grid grid-cols-6 gap-4"
 };
-var _hoisted_130 = {
+var _hoisted_136 = {
   "class": "col-span-6"
 };
-var _hoisted_131 = {
+var _hoisted_137 = {
   "class": "flex justify-center my-8"
 };
 
-var _hoisted_132 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Giving through GCash for ");
+var _hoisted_138 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Giving through GCash for ");
 
-var _hoisted_133 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" coming soon.");
+var _hoisted_139 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" coming soon.");
 
-var _hoisted_134 = {
+var _hoisted_140 = {
   "class": "col-span-6 mx-auto"
 };
-var _hoisted_135 = {
+var _hoisted_141 = {
   "class": "block"
 };
-var _hoisted_136 = ["src"];
-var _hoisted_137 = {
+var _hoisted_142 = ["src"];
+var _hoisted_143 = {
   "class": "col-span-6 mb-4"
 };
-var _hoisted_138 = {
+var _hoisted_144 = {
   "class": "flex justify-center"
 };
 
-var _hoisted_139 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 1</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\">Save this QR code image on your device.</p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 2</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Open GCash app. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 3</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Select <b>Pay QR</b> and upload the QR code image. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 4</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Enter the amount. Click Submit. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 5</h1></div>", 9);
+var _hoisted_145 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 1</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\">Save this QR code image on your device.</p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 2</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Open GCash app. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 3</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Select <b>Pay QR</b> and upload the QR code image. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 4</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Enter the amount. Click Submit. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 5</h1></div>", 9);
 
-var _hoisted_148 = {
+var _hoisted_154 = {
   "class": "col-span-5"
 };
-var _hoisted_149 = {
+var _hoisted_155 = {
   "class": "text-sm text-gray-600 inline-block align-bottom"
 };
 
-var _hoisted_150 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Upload the transaction slip of your giving at ");
+var _hoisted_156 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Upload the transaction slip of your giving at ");
 
-var _hoisted_151 = ["href"];
+var _hoisted_157 = ["href"];
 
-var _hoisted_152 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" or email at ");
+var _hoisted_158 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" or email at ");
 
-var _hoisted_153 = ["href"];
+var _hoisted_159 = ["href"];
 
-var _hoisted_154 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(", so we can properly acknowledge and account your giving. Thank you for your generosity. ");
+var _hoisted_160 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(", so we can properly acknowledge and account your giving. Thank you for your generosity. ");
 
-var _hoisted_155 = {
+var _hoisted_161 = {
   key: 1,
   "class": "grid-cols-5 gap-6"
 };
 
-var _hoisted_156 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "PayMaya", -1
+var _hoisted_162 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "PayMaya", -1
 /* HOISTED */
 );
 
-var _hoisted_157 = {
+var _hoisted_163 = {
   "class": "px-4 py-3 bg-gray-50 text-right sm:px-6"
 };
-var _hoisted_158 = ["disabled"];
+var _hoisted_164 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navigation "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     "class": "h-16 w-auto",
@@ -20721,10 +20827,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "first-name",
     id: "first-name",
     autocomplete: "given-name",
-    "class": "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-  }, null, 512
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md", $data.errorValidation.firstName ? 'border-red-600' : ''])
+  }, null, 2
+  /* CLASS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.firstName]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_73, " Please provide a First Name. ", 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.firstName]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <span class=\"text-sm\">\n                      Lorem ipsum dolor\n                    </span> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [_hoisted_74, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.errorValidation.firstName]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_74, [_hoisted_75, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
       return $data.lastName = $event;
     }),
@@ -20732,20 +20840,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "last-name",
     id: "last-name",
     autocomplete: "family-name",
-    "class": "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-  }, null, 512
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md", $data.errorValidation.lastName ? 'border-red-600' : ''])
+  }, null, 2
+  /* CLASS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.lastName]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_76, " Please provide a Last Name. ", 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.lastName]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_75, [_hoisted_76, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.errorValidation.lastName]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_77, [_hoisted_78, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
       return $data.mobileNo = $event;
     }),
     type: "text",
     name: "mobile-no",
     id: "mobile-no",
-    "class": "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-  }, null, 512
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md", $data.errorValidation.mobileNo ? 'border-red-600' : ''])
+  }, null, 2
+  /* CLASS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.mobileNo]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_79, " Please provide a Mobile Number. ", 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.mobileNo]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_77, [_hoisted_78, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.errorValidation.mobileNo]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_80, [_hoisted_81, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
       return $data.email = $event;
     }),
@@ -20753,10 +20865,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "email-add",
     id: "email-add",
     autocomplete: "email",
-    "class": "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-  }, null, 512
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md", $data.errorValidation.email ? 'border-red-600' : ''])
+  }, null, 2
+  /* CLASS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_82, " Please provide an Email Address. ", 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_79, [_hoisted_80, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.errorValidation.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_83, [_hoisted_84, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
       return $data.country = $event;
     }),
@@ -20764,39 +20878,44 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "country",
     autocomplete: "country-name",
     "class": "mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-  }, _hoisted_82, 512
+  }, _hoisted_86, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.country]])]), _hoisted_83, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_84, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_85, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.country]])]), _hoisted_87, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_88, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_89, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25 hover:bg-victory-blue/50",
     onClick: _cache[16] || (_cache[16] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.addGiving && $options.addGiving.apply($options, arguments);
     }, ["prevent"]))
-  }, _hoisted_88)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Giving Breakdown "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.givingBreakdown, function (breakdown, index) {
+  }, _hoisted_92)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Giving Breakdown "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.givingBreakdown, function (breakdown, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: index,
       "class": "col-span-6"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_89, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_90, [_hoisted_91, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_92, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_93, [$data.currency == 'PHP' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_94, " ₱ ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_95, " $ "))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_93, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_94, [_hoisted_95, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_96, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_97, [$data.currency == 'PHP' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_98, " ₱ ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_99, " $ "))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       "onUpdate:modelValue": function onUpdateModelValue($event) {
         return breakdown.amount = $event;
       },
       type: "text",
       name: "price",
       id: "price",
-      "class": "focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md",
-      placeholder: "0"
-    }, null, 8
-    /* PROPS */
-    , _hoisted_96), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, breakdown.amount]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_97, [_hoisted_98, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md", breakdown.errorValidation.amount ? 'border-red-600' : '']),
+      placeholder: "0",
+      onKeyup: function onKeyup($event) {
+        return $options.checkValidation(index, 'amount');
+      }
+    }, null, 42
+    /* CLASS, PROPS, HYDRATE_EVENTS */
+    , _hoisted_100), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, breakdown.amount]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_101, [_hoisted_102, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
       "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
         return $data.currency = $event;
       }),
       id: "currency",
       name: "currency",
       "class": "focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
-    }, _hoisted_101, 512
+    }, _hoisted_105, 512
     /* NEED_PATCH */
-    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.currency]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_102, [_hoisted_103, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.currency]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_106, " Please provide amount. ", 512
+    /* NEED_PATCH */
+    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, breakdown.errorValidation.amount]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_107, [_hoisted_108, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
       "onUpdate:modelValue": function onUpdateModelValue($event) {
         return breakdown.typeOfGiving = $event;
       },
@@ -20804,21 +20923,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       name: "category",
       autocomplete: "category-name",
       "class": "mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-    }, _hoisted_113, 8
+    }, _hoisted_118, 8
     /* PROPS */
-    , _hoisted_104), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, breakdown.typeOfGiving]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_114, [_hoisted_115, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_109), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, breakdown.typeOfGiving]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_119, [_hoisted_120, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       "onUpdate:modelValue": function onUpdateModelValue($event) {
         return breakdown.others = $event;
       },
       type: "text",
       name: "others",
       id: "others",
-      "class": "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-    }, null, 8
-    /* PROPS */
-    , _hoisted_116), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, breakdown.others]])], 512
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md", breakdown.errorValidation.others ? 'border-red-600' : '']),
+      onKeyup: function onKeyup($event) {
+        return $options.checkValidation(index, 'others');
+      }
+    }, null, 42
+    /* CLASS, PROPS, HYDRATE_EVENTS */
+    , _hoisted_121), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, breakdown.others]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_122, " Please provide the purpose of giving. ", 512
     /* NEED_PATCH */
-    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, breakdown.typeOfGiving == 'others']]), index > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_117, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_118, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_119, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, breakdown.errorValidation.others]])], 512
+    /* NEED_PATCH */
+    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, breakdown.typeOfGiving == 'others']]), index > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_123, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_124, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_125, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
       "class": "flex-shrink-0 h-6 w-6 text-red-400 cursor-pointer",
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 20 20",
@@ -20826,24 +20950,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $options.removeGiving(index);
       }, ["prevent"])
-    }, _hoisted_122, 8
+    }, _hoisted_128, 8
     /* PROPS */
-    , _hoisted_120))])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
+    , _hoisted_126))])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
   }), 128
   /* KEYED_FRAGMENT */
-  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_123, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_124, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_125, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_126, [_hoisted_127, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_128, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formattedTotalAmount), 1
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_129, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_130, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_131, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_132, [_hoisted_133, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_134, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formattedTotalAmount), 1
   /* TEXT */
   )])])])])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash or PayMaya giving channel "), $data.giveThruChannel == 'gcash' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_129, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash "), $data.giveToCenter == 'cabuyao' || $data.giveToCenter == 'siniloan' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash or PayMaya giving channel "), $data.giveThruChannel == 'gcash' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_135, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash "), $data.giveToCenter == 'cabuyao' || $data.giveToCenter == 'siniloan' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Coming Soon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_130, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_131, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, [_hoisted_132, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['name']), 1
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Coming Soon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_136, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_137, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, [_hoisted_138, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['name']), 1
   /* TEXT */
-  ), _hoisted_133])])])], 2112
+  ), _hoisted_139])])])], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_134, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_135, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_140, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_141, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $options.centerDetails['gcashQR'],
     style: {
       "height": "350px"
@@ -20851,31 +20975,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     alt: "GCash QR Code"
   }, null, 8
   /* PROPS */
-  , _hoisted_136)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_137, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_138, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  , _hoisted_142)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_143, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_144, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "button inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25 hover:bg-victory-blue/50 cursor-pointer",
     href: "#!",
     onClick: _cache[18] || (_cache[18] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.downloadGCashQRCode($options.centerDetails['gcashQR']);
     }, ["prevent"]))
-  }, " Save to Device ")])]), _hoisted_139, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_148, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_149, [_hoisted_150, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, " Save to Device ")])]), _hoisted_145, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_154, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_155, [_hoisted_156, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "https://".concat($options.centerDetails['givingAckLink']),
     target: "_blank",
     "class": "text-indigo-600"
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['givingAckLink']), 9
   /* TEXT, PROPS */
-  , _hoisted_151), _hoisted_152, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  , _hoisted_157), _hoisted_158, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "mailto:".concat($options.centerDetails['email']),
     target: "_blank",
     "class": "text-indigo-600"
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['email']), 9
   /* TEXT, PROPS */
-  , _hoisted_153), _hoisted_154])])], 64
+  , _hoisted_159), _hoisted_160])])], 64
   /* STABLE_FRAGMENT */
-  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_155, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" PayMaya "), _hoisted_156]))], 2112
+  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_161, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" PayMaya "), _hoisted_162]))], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   ))])], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_157, [$data.activeTab == 'general' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_163, [$data.activeTab == 'general' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
     type: "button",
     "class": "inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
@@ -20900,7 +21024,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["prevent"]))
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.giveButtonText), 11
   /* TEXT, CLASS, PROPS */
-  , _hoisted_158)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
+  , _hoisted_164)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
   /* STABLE_FRAGMENT */
   ))])])])])]);
 }
