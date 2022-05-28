@@ -19339,7 +19339,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['appUrl', 'payMayaUrl', 'logoUrl', 'givingImgUrl', 'pkCAL', 'pkLB', 'pkSP', 'pkSC', 'gcashCALQR', 'gcashLBQR', 'gcashSPQR', 'gcashSCQR'],
+  props: ['appUrl', 'payMayaUrl', 'logoUrl', 'givingImgUrl', 'pkCAB', 'pkCAL', 'pkLB', 'pkSL', 'pkSP', 'pkSC', 'gcashCALQR', 'gcashLBQR', 'gcashSPQR', 'gcashSCQR'],
   data: function data() {
     return {
       payMayaGivingStatus: '',
@@ -19448,7 +19448,7 @@ __webpack_require__.r(__webpack_exports__);
           centerDetails['givingAckLink'] = 'bit.ly/vcalambaonlinegiving';
           centerDetails['email'] = 'cabuyao@victory.org.ph';
           centerDetails['gcashQR'] = '';
-          centerDetails['primaryKey'] = this.pkCAL;
+          centerDetails['primaryKey'] = this.pkCAB;
           break;
 
         case 'calamba':
@@ -19488,7 +19488,7 @@ __webpack_require__.r(__webpack_exports__);
           centerDetails['givingAckLink'] = 'bit.ly/vsantacruzonlinegiving';
           centerDetails['email'] = 'siniloan@victory.org.ph';
           centerDetails['gcashQR'] = '';
-          centerDetails['primaryKey'] = this.pkSC;
+          centerDetails['primaryKey'] = this.pkSL;
           break;
 
         default:
@@ -20574,62 +20574,57 @@ var _hoisted_103 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElemen
 /* HOISTED */
 );
 
-var _hoisted_104 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "USD", -1
-/* HOISTED */
-);
-
-var _hoisted_105 = [_hoisted_103, _hoisted_104];
-var _hoisted_106 = {
+var _hoisted_104 = {
   "class": "text-xs text-red-500"
 };
-var _hoisted_107 = {
+var _hoisted_105 = {
   "class": "col-span-6 sm:col-span-2"
 };
 
-var _hoisted_108 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_106 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "category",
   "class": "block text-sm font-medium text-gray-700"
 }, "Type of Giving", -1
 /* HOISTED */
 );
 
-var _hoisted_109 = ["onUpdate:modelValue"];
+var _hoisted_107 = ["onUpdate:modelValue"];
 
-var _hoisted_110 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"tithes_and_offering\">Tithes and Offering</option><option value=\"benevolence\">Benevolence</option><option value=\"local_building\">Local Building Fund</option><option value=\"missions\">Missions</option><option value=\"en_building\">Every Nation Building</option><option value=\"en_campus\">Every Nation Campus</option><option value=\"real_life\">Real LIFE Foundation</option><option value=\"others\">Others</option>", 8);
+var _hoisted_108 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"tithes_and_offering\">Tithes and Offering</option><option value=\"benevolence\">Benevolence</option><option value=\"local_building\">Local Building Fund</option><option value=\"missions\">Missions</option><option value=\"en_building\">Every Nation Building</option><option value=\"en_campus\">Every Nation Campus</option><option value=\"real_life\">Real LIFE Foundation</option><option value=\"others\">Others</option>", 8);
 
-var _hoisted_118 = [_hoisted_110];
-var _hoisted_119 = {
+var _hoisted_116 = [_hoisted_108];
+var _hoisted_117 = {
   "class": "col-span-6 sm:col-span-2"
 };
 
-var _hoisted_120 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_118 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "others",
   "class": "block text-sm font-medium text-gray-700"
 }, " ", -1
 /* HOISTED */
 );
 
-var _hoisted_121 = ["onUpdate:modelValue", "onKeyup"];
-var _hoisted_122 = {
+var _hoisted_119 = ["onUpdate:modelValue", "onKeyup"];
+var _hoisted_120 = {
   "class": "text-xs text-red-500"
 };
-var _hoisted_123 = {
+var _hoisted_121 = {
   key: 0,
   "class": "col-span-6 sm:col-span-1"
 };
-var _hoisted_124 = {
+var _hoisted_122 = {
   "class": "grid content-center h-full"
 };
 
-var _hoisted_125 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_123 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "block"
 }, " ", -1
 /* HOISTED */
 );
 
-var _hoisted_126 = ["onClick"];
+var _hoisted_124 = ["onClick"];
 
-var _hoisted_127 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+var _hoisted_125 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
   "fill-rule": "evenodd",
   d: "M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z",
   "clip-rule": "evenodd"
@@ -20637,90 +20632,90 @@ var _hoisted_127 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElemen
 /* HOISTED */
 );
 
-var _hoisted_128 = [_hoisted_127];
-var _hoisted_129 = {
+var _hoisted_126 = [_hoisted_125];
+var _hoisted_127 = {
   "class": "col-span-6"
 };
-var _hoisted_130 = {
+var _hoisted_128 = {
   "class": "grid grid-cols-7 gap-4"
 };
-var _hoisted_131 = {
+var _hoisted_129 = {
   "class": "col-span-6 sm:col-span-2"
 };
-var _hoisted_132 = {
+var _hoisted_130 = {
   "class": "flex items-center"
 };
 
-var _hoisted_133 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+var _hoisted_131 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "text-sm font-medium text-gray-500"
 }, "Total", -1
 /* HOISTED */
 );
 
-var _hoisted_134 = {
+var _hoisted_132 = {
   "class": "ml-2 text-sm font-semibold text-gray-900"
 };
-var _hoisted_135 = {
+var _hoisted_133 = {
   key: 0,
   "class": "grid grid-cols-6 gap-4"
 };
-var _hoisted_136 = {
+var _hoisted_134 = {
   "class": "col-span-6"
 };
-var _hoisted_137 = {
+var _hoisted_135 = {
   "class": "flex justify-center my-8"
 };
 
-var _hoisted_138 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Giving through GCash for ");
+var _hoisted_136 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Giving through GCash for ");
 
-var _hoisted_139 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" coming soon.");
+var _hoisted_137 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" coming soon.");
 
-var _hoisted_140 = {
+var _hoisted_138 = {
   "class": "col-span-6 mx-auto"
 };
-var _hoisted_141 = {
+var _hoisted_139 = {
   "class": "block"
 };
-var _hoisted_142 = ["src"];
-var _hoisted_143 = {
+var _hoisted_140 = ["src"];
+var _hoisted_141 = {
   "class": "col-span-6 mb-4"
 };
-var _hoisted_144 = {
+var _hoisted_142 = {
   "class": "flex justify-center"
 };
 
-var _hoisted_145 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 1</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\">Save this QR code image on your device.</p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 2</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Open GCash app. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 3</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Select <b>Pay QR</b> and upload the QR code image. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 4</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Enter the amount. Click Submit. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 5</h1></div>", 9);
+var _hoisted_143 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 1</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\">Save this QR code image on your device.</p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 2</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Open GCash app. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 3</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Select <b>Pay QR</b> and upload the QR code image. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 4</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Enter the amount. Click Submit. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 5</h1></div>", 9);
 
-var _hoisted_154 = {
+var _hoisted_152 = {
   "class": "col-span-5"
 };
-var _hoisted_155 = {
+var _hoisted_153 = {
   "class": "text-sm text-gray-600 inline-block align-bottom"
 };
 
-var _hoisted_156 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Upload the transaction slip of your giving at ");
+var _hoisted_154 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Upload the transaction slip of your giving at ");
+
+var _hoisted_155 = ["href"];
+
+var _hoisted_156 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" or email at ");
 
 var _hoisted_157 = ["href"];
 
-var _hoisted_158 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" or email at ");
+var _hoisted_158 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(", so we can properly acknowledge and account your giving. Thank you for your generosity. ");
 
-var _hoisted_159 = ["href"];
-
-var _hoisted_160 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(", so we can properly acknowledge and account your giving. Thank you for your generosity. ");
-
-var _hoisted_161 = {
+var _hoisted_159 = {
   key: 1,
   "class": "grid-cols-5 gap-6"
 };
 
-var _hoisted_162 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "PayMaya", -1
+var _hoisted_160 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "PayMaya", -1
 /* HOISTED */
 );
 
-var _hoisted_163 = {
+var _hoisted_161 = {
   "class": "px-4 py-3 bg-gray-50 text-right sm:px-6"
 };
-var _hoisted_164 = ["disabled"];
+var _hoisted_162 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navigation "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     "class": "h-16 w-auto",
@@ -20911,11 +20906,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       id: "currency",
       name: "currency",
       "class": "focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
-    }, _hoisted_105, 512
+    }, [_hoisted_103, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <option>USD</option> ")], 512
     /* NEED_PATCH */
-    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.currency]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_106, " Please provide amount. ", 512
+    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.currency]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_104, " Please provide amount. ", 512
     /* NEED_PATCH */
-    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, breakdown.errorValidation.amount]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_107, [_hoisted_108, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, breakdown.errorValidation.amount]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_105, [_hoisted_106, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
       "onUpdate:modelValue": function onUpdateModelValue($event) {
         return breakdown.typeOfGiving = $event;
       },
@@ -20923,9 +20918,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       name: "category",
       autocomplete: "category-name",
       "class": "mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-    }, _hoisted_118, 8
+    }, _hoisted_116, 8
     /* PROPS */
-    , _hoisted_109), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, breakdown.typeOfGiving]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_119, [_hoisted_120, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_107), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, breakdown.typeOfGiving]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_117, [_hoisted_118, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       "onUpdate:modelValue": function onUpdateModelValue($event) {
         return breakdown.others = $event;
       },
@@ -20938,11 +20933,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, null, 42
     /* CLASS, PROPS, HYDRATE_EVENTS */
-    , _hoisted_121), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, breakdown.others]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_122, " Please provide the purpose of giving. ", 512
+    , _hoisted_119), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, breakdown.others]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_120, " Please provide the purpose of giving. ", 512
     /* NEED_PATCH */
     ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, breakdown.errorValidation.others]])], 512
     /* NEED_PATCH */
-    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, breakdown.typeOfGiving == 'others']]), index > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_123, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_124, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_125, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, breakdown.typeOfGiving == 'others']]), index > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_121, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_122, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_123, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
       "class": "flex-shrink-0 h-6 w-6 text-red-400 cursor-pointer",
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 20 20",
@@ -20950,24 +20945,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $options.removeGiving(index);
       }, ["prevent"])
-    }, _hoisted_128, 8
+    }, _hoisted_126, 8
     /* PROPS */
-    , _hoisted_126))])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
+    , _hoisted_124))])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
   }), 128
   /* KEYED_FRAGMENT */
-  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_129, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_130, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_131, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_132, [_hoisted_133, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_134, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formattedTotalAmount), 1
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_127, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_128, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_129, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_130, [_hoisted_131, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_132, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formattedTotalAmount), 1
   /* TEXT */
   )])])])])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash or PayMaya giving channel "), $data.giveThruChannel == 'gcash' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_135, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash "), $data.giveToCenter == 'cabuyao' || $data.giveToCenter == 'siniloan' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash or PayMaya giving channel "), $data.giveThruChannel == 'gcash' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_133, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash "), $data.giveToCenter == 'cabuyao' || $data.giveToCenter == 'siniloan' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Coming Soon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_136, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_137, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, [_hoisted_138, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['name']), 1
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Coming Soon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_134, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_135, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, [_hoisted_136, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['name']), 1
   /* TEXT */
-  ), _hoisted_139])])])], 2112
+  ), _hoisted_137])])])], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_140, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_141, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_138, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_139, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $options.centerDetails['gcashQR'],
     style: {
       "height": "350px"
@@ -20975,31 +20970,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     alt: "GCash QR Code"
   }, null, 8
   /* PROPS */
-  , _hoisted_142)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_143, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_144, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  , _hoisted_140)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_141, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_142, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "button inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25 hover:bg-victory-blue/50 cursor-pointer",
     href: "#!",
     onClick: _cache[18] || (_cache[18] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.downloadGCashQRCode($options.centerDetails['gcashQR']);
     }, ["prevent"]))
-  }, " Save to Device ")])]), _hoisted_145, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_154, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_155, [_hoisted_156, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, " Save to Device ")])]), _hoisted_143, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_152, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_153, [_hoisted_154, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "https://".concat($options.centerDetails['givingAckLink']),
     target: "_blank",
     "class": "text-indigo-600"
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['givingAckLink']), 9
   /* TEXT, PROPS */
-  , _hoisted_157), _hoisted_158, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  , _hoisted_155), _hoisted_156, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "mailto:".concat($options.centerDetails['email']),
     target: "_blank",
     "class": "text-indigo-600"
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['email']), 9
   /* TEXT, PROPS */
-  , _hoisted_159), _hoisted_160])])], 64
+  , _hoisted_157), _hoisted_158])])], 64
   /* STABLE_FRAGMENT */
-  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_161, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" PayMaya "), _hoisted_162]))], 2112
+  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_159, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" PayMaya "), _hoisted_160]))], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   ))])], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_163, [$data.activeTab == 'general' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_161, [$data.activeTab == 'general' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
     type: "button",
     "class": "inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
@@ -21024,7 +21019,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["prevent"]))
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.giveButtonText), 11
   /* TEXT, CLASS, PROPS */
-  , _hoisted_164)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
+  , _hoisted_162)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
   /* STABLE_FRAGMENT */
   ))])])])])]);
 }

@@ -323,7 +323,7 @@
                                 class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
                               >
                                 <option>PHP</option>
-                                <option>USD</option>
+                                <!-- <option>USD</option> -->
                               </select>
                             </div>
                           </div>
@@ -519,7 +519,7 @@
   export default {
     props: [
       'appUrl', 'payMayaUrl', 'logoUrl', 'givingImgUrl', 
-      'pkCAL', 'pkLB', 'pkSP', 'pkSC', 
+      'pkCAB', 'pkCAL', 'pkLB', 'pkSL', 'pkSP', 'pkSC', 
       'gcashCALQR', 'gcashLBQR', 'gcashSPQR', 'gcashSCQR',
     ],
 
@@ -651,7 +651,7 @@
             centerDetails['givingAckLink'] = 'bit.ly/vcalambaonlinegiving';
             centerDetails['email'] = 'cabuyao@victory.org.ph';
             centerDetails['gcashQR'] = '';
-            centerDetails['primaryKey'] = this.pkCAL;
+            centerDetails['primaryKey'] = this.pkCAB;
             break;
 
           case 'calamba':
@@ -691,7 +691,7 @@
             centerDetails['givingAckLink'] = 'bit.ly/vsantacruzonlinegiving';
             centerDetails['email'] = 'siniloan@victory.org.ph';
             centerDetails['gcashQR'] = '';
-            centerDetails['primaryKey'] = this.pkSC;
+            centerDetails['primaryKey'] = this.pkSL;
             break;
         
           default:
