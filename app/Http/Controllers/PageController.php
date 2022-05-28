@@ -38,7 +38,7 @@ class PageController extends Controller
             'payMayaUrl'   => env('PAYMAYA_URL'),
             'logoUrl'      => asset('images/victory_blue.png'),
             'givingImgUrl' => asset('images/giving_updated.jpeg'),
-            'pkCAB'        => base64_encode(env('PAYMAYA_PK_CBY') . ':'),
+            'pkCAB'        => base64_encode(env('PAYMAYA_PK_CAB') . ':'),
             'pkCAL'        => base64_encode(env('PAYMAYA_PK_CAL') . ':'),
             'pkLB'         => base64_encode(env('PAYMAYA_PK_LB') . ':'),
             'pkSL'         => base64_encode(env('PAYMAYA_PK_SL') . ':'),
