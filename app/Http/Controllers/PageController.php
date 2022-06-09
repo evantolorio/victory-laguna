@@ -44,10 +44,12 @@ class PageController extends Controller
             'pkSL'         => base64_encode(env('PAYMAYA_PK_SL') . ':'),
             'pkSP'         => base64_encode(env('PAYMAYA_PK_SP') . ':'),
             'pkSC'         => base64_encode(env('PAYMAYA_PK_SC') . ':'),
-            'gcashCALQR'   => asset('images/gcash_calamba.jpeg'),
-            'gcashLBQR'    => asset('images/gcash_losbanos.jpeg'),
+            'gcashCABQR'   => asset('images/gcash_cabuyao.png'),
+            'gcashCALQR'   => asset('images/gcash_calamba.png'),
+            'gcashLBQR'    => asset('images/gcash_losbanos.png'),
+            'gcashSLQR'   => asset('images/gcash_siniloan.png'),
             'gcashSPQR'    => asset('images/gcash_sanpablo.png'),
-            'gcashSCQR'    => asset('images/gcash_stacruz.jpeg'),
+            'gcashSCQR'    => asset('images/gcash_stacruz.png'),
         ];
 
         return Inertia::render('HomePage/Give', $data);

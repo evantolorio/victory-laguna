@@ -19339,7 +19339,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['appUrl', 'payMayaUrl', 'logoUrl', 'givingImgUrl', 'pkCAB', 'pkCAL', 'pkLB', 'pkSL', 'pkSP', 'pkSC', 'gcashCALQR', 'gcashLBQR', 'gcashSPQR', 'gcashSCQR'],
+  props: ['appUrl', 'payMayaUrl', 'logoUrl', 'givingImgUrl', 'pkCAB', 'pkCAL', 'pkLB', 'pkSL', 'pkSP', 'pkSC', 'gcashCABQR', 'gcashCALQR', 'gcashLBQR', 'gcashSLQR', 'gcashSPQR', 'gcashSCQR'],
   data: function data() {
     return {
       payMayaGivingStatus: '',
@@ -19447,7 +19447,7 @@ __webpack_require__.r(__webpack_exports__);
           centerDetails['name'] = 'Victory Cabuyao';
           centerDetails['givingAckLink'] = 'bit.ly/vcalambaonlinegiving';
           centerDetails['email'] = 'cabuyao@victory.org.ph';
-          centerDetails['gcashQR'] = '';
+          centerDetails['gcashQR'] = this.gcashCABQR;
           centerDetails['primaryKey'] = this.pkCAB;
           break;
 
@@ -19487,7 +19487,7 @@ __webpack_require__.r(__webpack_exports__);
           centerDetails['name'] = 'Victory Siniloan';
           centerDetails['givingAckLink'] = 'bit.ly/vsantacruzonlinegiving';
           centerDetails['email'] = 'siniloan@victory.org.ph';
-          centerDetails['gcashQR'] = '';
+          centerDetails['gcashQR'] = this.gcashSLQR;
           centerDetails['primaryKey'] = this.pkSL;
           break;
 
@@ -20660,62 +20660,51 @@ var _hoisted_133 = {
   "class": "grid grid-cols-6 gap-4"
 };
 var _hoisted_134 = {
-  "class": "col-span-6"
-};
-var _hoisted_135 = {
-  "class": "flex justify-center my-8"
-};
-
-var _hoisted_136 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Giving through GCash for ");
-
-var _hoisted_137 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" coming soon.");
-
-var _hoisted_138 = {
   "class": "col-span-6 mx-auto"
 };
-var _hoisted_139 = {
+var _hoisted_135 = {
   "class": "block"
 };
-var _hoisted_140 = ["src"];
-var _hoisted_141 = {
+var _hoisted_136 = ["src"];
+var _hoisted_137 = {
   "class": "col-span-6 mb-4"
 };
-var _hoisted_142 = {
+var _hoisted_138 = {
   "class": "flex justify-center"
 };
 
-var _hoisted_143 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 1</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\">Save this QR code image on your device.</p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 2</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Open GCash app. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 3</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Select <b>Pay QR</b> and upload the QR code image. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 4</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Enter the amount. Click Submit. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 5</h1></div>", 9);
+var _hoisted_139 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 1</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\">Save this QR code image on your device.</p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 2</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Open GCash app. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 3</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Select <b>Pay QR</b> and upload the QR code image. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 4</h1></div><div class=\"col-span-5\"><p class=\"text-sm text-gray-600 inline-block align-bottom\"> Enter the amount. Click Submit. </p></div><div class=\"col-span-1\"><h1 class=\"text-xl font-medium text-gray-900 text-right\">Step 5</h1></div>", 9);
 
-var _hoisted_152 = {
+var _hoisted_148 = {
   "class": "col-span-5"
 };
-var _hoisted_153 = {
+var _hoisted_149 = {
   "class": "text-sm text-gray-600 inline-block align-bottom"
 };
 
-var _hoisted_154 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Upload the transaction slip of your giving at ");
+var _hoisted_150 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Upload the transaction slip of your giving at ");
 
-var _hoisted_155 = ["href"];
+var _hoisted_151 = ["href"];
 
-var _hoisted_156 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" or email at ");
+var _hoisted_152 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" or email at ");
 
-var _hoisted_157 = ["href"];
+var _hoisted_153 = ["href"];
 
-var _hoisted_158 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(", so we can properly acknowledge and account your giving. Thank you for your generosity. ");
+var _hoisted_154 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(", so we can properly acknowledge and account your giving. Thank you for your generosity. ");
 
-var _hoisted_159 = {
+var _hoisted_155 = {
   key: 1,
   "class": "grid-cols-5 gap-6"
 };
 
-var _hoisted_160 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "PayMaya", -1
+var _hoisted_156 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "PayMaya", -1
 /* HOISTED */
 );
 
-var _hoisted_161 = {
+var _hoisted_157 = {
   "class": "px-4 py-3 bg-gray-50 text-right sm:px-6"
 };
-var _hoisted_162 = ["disabled"];
+var _hoisted_158 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navigation "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     "class": "h-16 w-auto",
@@ -20760,7 +20749,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: "#!",
     "class": "text-sm text-amber-800 font-semibold"
   }, " Dismiss ")])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Giving Image "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "bg-cover rounded shadow-md",
+    "class": "bg-cover rounded shadow-md brightness-125",
     style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)({
       'background-image': $options.givingImageUrl
     })
@@ -20954,15 +20943,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )])])])])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash or PayMaya giving channel "), $data.giveThruChannel == 'gcash' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_133, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash "), $data.giveToCenter == 'cabuyao' || $data.giveToCenter == 'siniloan' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    key: 0
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Coming Soon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_134, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_135, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, [_hoisted_136, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['name']), 1
-  /* TEXT */
-  ), _hoisted_137])])])], 2112
-  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_138, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_139, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash or PayMaya giving channel "), $data.giveThruChannel == 'gcash' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_133, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GCash "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_134, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_135, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $options.centerDetails['gcashQR'],
     style: {
       "height": "350px"
@@ -20970,31 +20951,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     alt: "GCash QR Code"
   }, null, 8
   /* PROPS */
-  , _hoisted_140)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_141, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_142, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  , _hoisted_136)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_137, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_138, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "button inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25 hover:bg-victory-blue/50 cursor-pointer",
     href: "#!",
     onClick: _cache[18] || (_cache[18] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.downloadGCashQRCode($options.centerDetails['gcashQR']);
     }, ["prevent"]))
-  }, " Save to Device ")])]), _hoisted_143, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_152, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_153, [_hoisted_154, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, " Save to Device ")])]), _hoisted_139, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_148, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_149, [_hoisted_150, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "https://".concat($options.centerDetails['givingAckLink']),
     target: "_blank",
     "class": "text-indigo-600"
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['givingAckLink']), 9
   /* TEXT, PROPS */
-  , _hoisted_155), _hoisted_156, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  , _hoisted_151), _hoisted_152, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "mailto:".concat($options.centerDetails['email']),
     target: "_blank",
     "class": "text-indigo-600"
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.centerDetails['email']), 9
   /* TEXT, PROPS */
-  , _hoisted_157), _hoisted_158])])], 64
-  /* STABLE_FRAGMENT */
-  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_159, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" PayMaya "), _hoisted_160]))], 2112
+  , _hoisted_153), _hoisted_154])])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_155, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" PayMaya "), _hoisted_156]))], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   ))])], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_161, [$data.activeTab == 'general' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_157, [$data.activeTab == 'general' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
     type: "button",
     "class": "inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-victory-blue hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
@@ -21019,7 +20998,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["prevent"]))
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.giveButtonText), 11
   /* TEXT, CLASS, PROPS */
-  , _hoisted_162)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
+  , _hoisted_158)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
   /* STABLE_FRAGMENT */
   ))])])])])]);
 }

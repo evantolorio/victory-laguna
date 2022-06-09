@@ -108,7 +108,7 @@
         </div>
 
         <!-- Giving Image -->
-        <div class="bg-cover rounded shadow-md"
+        <div class="bg-cover rounded shadow-md brightness-125"
           :style="{'background-image': givingImageUrl}"
         >
         </div>
@@ -401,72 +401,62 @@
                     class="grid grid-cols-6 gap-4"
                   >
                     <!-- GCash -->
-                    <template v-if="giveToCenter == 'cabuyao' || giveToCenter == 'siniloan'">
-                      <!-- Coming Soon -->
-                      <div class="col-span-6">
-                        <div class="flex justify-center my-8">
-                          <h1>Giving through GCash for <b>{{ centerDetails['name'] }}</b> coming soon.</h1>
-                        </div>
+                    <div class="col-span-6 mx-auto">
+                      <div class="block">
+                        <img :src="centerDetails['gcashQR']"
+                          style="height:350px;"
+                          alt="GCash QR Code"
+                        >
                       </div>
-                    </template>
-                    <template v-else>
-                      <div class="col-span-6 mx-auto">
-                        <div class="block">
-                          <img :src="centerDetails['gcashQR']"
-                            style="height:350px;"
-                            alt="GCash QR Code"
-                          >
-                        </div>
+                    </div>
+                    <div class="col-span-6 mb-4">
+                      <div class="flex justify-center">
+                        <a class="button inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25  hover:bg-victory-blue/50 cursor-pointer"
+                          href="#!"
+                          @click.prevent="downloadGCashQRCode(centerDetails['gcashQR'])"
+                        >
+                          Save to Device
+                        </a>
                       </div>
-                      <div class="col-span-6 mb-4">
-                        <div class="flex justify-center">
-                          <a class="button inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25  hover:bg-victory-blue/50 cursor-pointer"
-                            href="#!"
-                            @click.prevent="downloadGCashQRCode(centerDetails['gcashQR'])"
-                          >
-                            Save to Device
-                          </a>
-                        </div>
-                      </div>
-                      <div class="col-span-1">
-                        <h1 class="text-xl font-medium text-gray-900 text-right">Step 1</h1>
-                      </div>
-                      <div class="col-span-5">
-                        <p class="text-sm text-gray-600 inline-block align-bottom">Save this QR code image on your device.</p>
-                      </div>
-                      <div class="col-span-1">
-                        <h1 class="text-xl font-medium text-gray-900 text-right">Step 2</h1>
-                      </div>
-                      <div class="col-span-5">
-                        <p class="text-sm text-gray-600 inline-block align-bottom">
-                          Open GCash app.
-                        </p>
-                      </div>
-                      <div class="col-span-1">
-                        <h1 class="text-xl font-medium text-gray-900 text-right">Step 3</h1>
-                      </div>
-                      <div class="col-span-5">
-                        <p class="text-sm text-gray-600 inline-block align-bottom">
-                          Select <b>Pay QR</b> and upload the QR code image.
-                        </p>
-                      </div>
-                      <div class="col-span-1">
-                        <h1 class="text-xl font-medium text-gray-900 text-right">Step 4</h1>
-                      </div>
-                      <div class="col-span-5">
-                        <p class="text-sm text-gray-600 inline-block align-bottom">
-                          Enter the amount. Click Submit.
-                        </p>
-                      </div>
-                      <div class="col-span-1">
-                        <h1 class="text-xl font-medium text-gray-900 text-right">Step 5</h1>
-                      </div>
-                      <div class="col-span-5">
-                        <p class="text-sm text-gray-600 inline-block align-bottom">
-                          Upload the transaction slip of your giving at  <a :href="`https://${centerDetails['givingAckLink']}`" target="_blank" class="text-indigo-600">{{ centerDetails['givingAckLink'] }}</a> or email at <a :href="`mailto:${centerDetails['email']}`" target="_blank" class="text-indigo-600">{{ centerDetails['email'] }}</a>, so we can properly acknowledge and account your giving. Thank you for your generosity.
-                        </p>
-                      </div>
-                    </template>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 1</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">Save this QR code image on your device.</p>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 2</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">
+                        Open GCash app.
+                      </p>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 3</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">
+                        Select <b>Pay QR</b> and upload the QR code image.
+                      </p>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 4</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">
+                        Enter the amount. Click Submit.
+                      </p>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 5</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">
+                        Upload the transaction slip of your giving at  <a :href="`https://${centerDetails['givingAckLink']}`" target="_blank" class="text-indigo-600">{{ centerDetails['givingAckLink'] }}</a> or email at <a :href="`mailto:${centerDetails['email']}`" target="_blank" class="text-indigo-600">{{ centerDetails['email'] }}</a>, so we can properly acknowledge and account your giving. Thank you for your generosity.
+                      </p>
+                    </div>
                   </div>
                   <div v-else
                     class="grid-cols-5 gap-6"
@@ -520,7 +510,7 @@
     props: [
       'appUrl', 'payMayaUrl', 'logoUrl', 'givingImgUrl', 
       'pkCAB', 'pkCAL', 'pkLB', 'pkSL', 'pkSP', 'pkSC', 
-      'gcashCALQR', 'gcashLBQR', 'gcashSPQR', 'gcashSCQR',
+      'gcashCABQR', 'gcashCALQR', 'gcashLBQR', 'gcashSLQR', 'gcashSPQR', 'gcashSCQR',
     ],
 
     data() {
@@ -650,7 +640,7 @@
             centerDetails['name'] = 'Victory Cabuyao';
             centerDetails['givingAckLink'] = 'bit.ly/vcalambaonlinegiving';
             centerDetails['email'] = 'cabuyao@victory.org.ph';
-            centerDetails['gcashQR'] = '';
+            centerDetails['gcashQR'] = this.gcashCABQR;
             centerDetails['primaryKey'] = this.pkCAB;
             break;
 
@@ -690,7 +680,7 @@
             centerDetails['name'] = 'Victory Siniloan';
             centerDetails['givingAckLink'] = 'bit.ly/vsantacruzonlinegiving';
             centerDetails['email'] = 'siniloan@victory.org.ph';
-            centerDetails['gcashQR'] = '';
+            centerDetails['gcashQR'] = this.gcashSLQR;
             centerDetails['primaryKey'] = this.pkSL;
             break;
         
