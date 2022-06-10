@@ -40,7 +40,7 @@
     
 
     <!-- Content -->
-    <div class="max-w-7xl mx-auto py-8 sm:px-6 h-screen">
+    <div class="max-w-7xl mx-auto py-10 sm:px-6 min-h-screen">
       <div class="grid grid-cols-3">
 
         <!-- Alert Messages -->
@@ -109,12 +109,12 @@
 
         <!-- Giving Image -->
         <div class="bg-cover rounded shadow-md brightness-125"
-          :style="{'background-image': givingImageUrl}"
+          :style="{'background-image': givingImageUrl, 'height': `${givingImageHeight}px`}"
         >
         </div>
 
         <!-- Giving Input -->
-        <div class="col-span-2 rounded-lg shadow-md ml-6 overflow-hidden">
+        <div id="giving-container" class="col-span-2 rounded-lg shadow-md ml-6 overflow-hidden">
           <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
             <div class="">
               <h1 class="text-3xl font-bold text-gray-900">Give</h1>
@@ -515,6 +515,7 @@
 
     data() {
       return {
+        givingImageHeight: 0,
         payMayaGivingStatus:'',
         activeTab: 'general',
         giveProcessing: false,
@@ -938,6 +939,11 @@
       if (urlParams.hasOwnProperty('status')) {
         this.payMayaGivingStatus = urlParams['status'];
       }
+
+      // Resize initial Giving image
+      this.givingImageHeight = document.querySelector('#giving-container').offsetHeight;
+
+
     }
 
   }

@@ -19342,6 +19342,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['appUrl', 'payMayaUrl', 'logoUrl', 'givingImgUrl', 'pkCAB', 'pkCAL', 'pkLB', 'pkSL', 'pkSP', 'pkSC', 'gcashCABQR', 'gcashCALQR', 'gcashLBQR', 'gcashSLQR', 'gcashSPQR', 'gcashSCQR'],
   data: function data() {
     return {
+      givingImageHeight: 0,
       payMayaGivingStatus: '',
       activeTab: 'general',
       giveProcessing: false,
@@ -19728,7 +19729,10 @@ __webpack_require__.r(__webpack_exports__);
 
     if (urlParams.hasOwnProperty('status')) {
       this.payMayaGivingStatus = urlParams['status'];
-    }
+    } // Resize initial Giving image
+
+
+    this.givingImageHeight = document.querySelector('#giving-container').offsetHeight;
   }
 });
 
@@ -20153,7 +20157,7 @@ var _hoisted_8 = {
   "class": "hidden md:flex items-center justify-end md:flex-1 lg:w-0"
 };
 var _hoisted_9 = {
-  "class": "max-w-7xl mx-auto py-8 sm:px-6 h-screen"
+  "class": "max-w-7xl mx-auto py-10 sm:px-6 min-h-screen"
 };
 var _hoisted_10 = {
   "class": "grid grid-cols-3"
@@ -20285,6 +20289,7 @@ var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_32 = {
+  id: "giving-container",
   "class": "col-span-2 rounded-lg shadow-md ml-6 overflow-hidden"
 };
 var _hoisted_33 = {
@@ -20751,7 +20756,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, " Dismiss ")])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Giving Image "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "bg-cover rounded shadow-md brightness-125",
     style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)({
-      'background-image': $options.givingImageUrl
+      'background-image': $options.givingImageUrl,
+      'height': "".concat($data.givingImageHeight, "px")
     })
   }, null, 4
   /* STYLE */
