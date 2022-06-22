@@ -19447,7 +19447,7 @@ __webpack_require__.r(__webpack_exports__);
       switch (selectedCenter) {
         case 'cabuyao':
           centerDetails['name'] = 'Victory Cabuyao';
-          centerDetails['givingAckLink'] = 'bit.ly/vcalambaonlinegiving';
+          centerDetails['givingAckLink'] = 'bit.ly/vcabuyaoonlinegiving';
           centerDetails['email'] = 'cabuyao@victory.org.ph';
           centerDetails['gcashQR'] = this.gcashCABQR;
           centerDetails['mayaQR'] = this.mayaCABQR;
@@ -19492,7 +19492,7 @@ __webpack_require__.r(__webpack_exports__);
 
         case 'siniloan':
           centerDetails['name'] = 'Victory Siniloan';
-          centerDetails['givingAckLink'] = 'bit.ly/vsantacruzonlinegiving';
+          centerDetails['givingAckLink'] = 'bit.ly/vSiniloanonlinegiving';
           centerDetails['email'] = 'siniloan@victory.org.ph';
           centerDetails['gcashQR'] = this.gcashSLQR;
           centerDetails['mayaQR'] = this.mayaSLQR;
