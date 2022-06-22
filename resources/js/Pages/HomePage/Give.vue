@@ -185,7 +185,7 @@
                       <option disabled value="">Please select payment channel</option>
                       <option value="credit_debit">Credit/Debit Card</option>
                       <option value="gcash">GCash</option>
-                      <option value="paymaya">PayMaya</option>
+                      <option value="paymaya">Maya</option>
                     </select>
                   </div>
 
@@ -323,7 +323,7 @@
                                 class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
                               >
                                 <option>PHP</option>
-                                <!-- <option>USD</option> -->
+                                <option>USD</option>
                               </select>
                             </div>
                           </div>
@@ -395,7 +395,7 @@
 
                 </div>
 
-                <!-- GCash or PayMaya giving channel -->
+                <!-- GCash or Maya giving channel -->
                 <template v-else>
                   <div v-if="giveThruChannel == 'gcash'" 
                     class="grid grid-cols-6 gap-4"
@@ -430,7 +430,7 @@
                     </div>
                     <div class="col-span-5">
                       <p class="text-sm text-gray-600 inline-block align-bottom">
-                        Open GCash app.
+                        Open <b>GCash</b> app.
                       </p>
                     </div>
                     <div class="col-span-1">
@@ -446,7 +446,7 @@
                     </div>
                     <div class="col-span-5">
                       <p class="text-sm text-gray-600 inline-block align-bottom">
-                        Enter the amount. Click Submit.
+                        Enter the amount. Click Pay.
                       </p>
                     </div>
                     <div class="col-span-1">
@@ -459,10 +459,65 @@
                     </div>
                   </div>
                   <div v-else
-                    class="grid-cols-5 gap-6"
+                    class="grid grid-cols-6 gap-4"
                   >
-                    <!-- PayMaya -->
-                    <h1>PayMaya</h1>
+                    <!-- Maya -->
+                    <div class="col-span-6 mx-auto">
+                      <div class="block">
+                        <img :src="centerDetails['mayaQR']"
+                          style="height:450px;"
+                          alt="Maya QR Code"
+                        >
+                      </div>
+                    </div>
+                    <div class="col-span-6 mb-4">
+                      <div class="flex justify-center">
+                        <a class="button inline-flex justify-center px-4 py-2 rounded text-sm text-victory-blue bg-victory-blue/25  hover:bg-victory-blue/50 cursor-pointer"
+                          href="#!"
+                          @click.prevent="downloadGCashQRCode(centerDetails['mayaQR'])"
+                        >
+                          Save to Device
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 1</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">Save this QR code image on your device.</p>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 2</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">
+                        Open <b>Maya</b> app.
+                      </p>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 3</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">
+                        Select <b>Pay with QR</b> and upload the QR code image.
+                      </p>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 4</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">
+                        Enter the amount. Click Pay.
+                      </p>
+                    </div>
+                    <div class="col-span-1">
+                      <h1 class="text-xl font-medium text-gray-900 text-right">Step 5</h1>
+                    </div>
+                    <div class="col-span-5">
+                      <p class="text-sm text-gray-600 inline-block align-bottom">
+                        Upload the transaction slip of your giving at  <a :href="`https://${centerDetails['givingAckLink']}`" target="_blank" class="text-indigo-600">{{ centerDetails['givingAckLink'] }}</a> or email at <a :href="`mailto:${centerDetails['email']}`" target="_blank" class="text-indigo-600">{{ centerDetails['email'] }}</a>, so we can properly acknowledge and account your giving. Thank you for your generosity.
+                      </p>
+                    </div>
                   </div>
                 </template>
               </div>
@@ -511,6 +566,7 @@
       'appUrl', 'payMayaUrl', 'logoUrl', 'givingImgUrl', 
       'pkCAB', 'pkCAL', 'pkLB', 'pkSL', 'pkSP', 'pkSC', 
       'gcashCABQR', 'gcashCALQR', 'gcashLBQR', 'gcashSLQR', 'gcashSPQR', 'gcashSCQR',
+      'mayaCABQR', 'mayaCALQR', 'mayaLBQR', 'mayaSLQR', 'mayaSPQR', 'mayaSCQR',
     ],
 
     data() {
@@ -633,6 +689,7 @@
           'givingAckLink': '',
           'email': '',
           'gcashQR': '',
+          'mayaQR': '',
           'primaryKey': ''
         };
 
@@ -642,6 +699,7 @@
             centerDetails['givingAckLink'] = 'bit.ly/vcalambaonlinegiving';
             centerDetails['email'] = 'cabuyao@victory.org.ph';
             centerDetails['gcashQR'] = this.gcashCABQR;
+            centerDetails['mayaQR'] = this.mayaCABQR;
             centerDetails['primaryKey'] = this.pkCAB;
             break;
 
@@ -650,6 +708,7 @@
             centerDetails['givingAckLink'] = 'bit.ly/vcalambaonlinegiving';
             centerDetails['email'] = 'calamba@victory.org.ph';
             centerDetails['gcashQR'] = this.gcashCALQR;
+            centerDetails['mayaQR'] = this.mayaCALQR;
             centerDetails['primaryKey'] = this.pkCAL;
             break;
 
@@ -658,6 +717,7 @@
             centerDetails['givingAckLink'] = 'bit.ly/vlbonlinegiving';
             centerDetails['email'] = 'losbanos@victory.org.ph';
             centerDetails['gcashQR'] = this.gcashLBQR;
+            centerDetails['mayaQR'] = this.mayaLBQR;
             centerDetails['primaryKey'] = this.pkLB;
             break;
 
@@ -666,6 +726,7 @@
             centerDetails['givingAckLink'] = 'bit.ly/vsanpabloonlinegiving';
             centerDetails['email'] = 'sanpablo@victory.org.ph';
             centerDetails['gcashQR'] = this.gcashSPQR;
+            centerDetails['mayaQR'] = this.mayaSPQR;
             centerDetails['primaryKey'] = this.pkSP;
             break;
 
@@ -674,6 +735,7 @@
             centerDetails['givingAckLink'] = 'bit.ly/vsantacruzonlinegiving';
             centerDetails['email'] = 'santacruz@victory.org.ph';
             centerDetails['gcashQR'] = this.gcashSCQR;
+            centerDetails['mayaQR'] = this.mayaSCQR;
             centerDetails['primaryKey'] = this.pkSC;
             break;
 
@@ -682,6 +744,7 @@
             centerDetails['givingAckLink'] = 'bit.ly/vsantacruzonlinegiving';
             centerDetails['email'] = 'siniloan@victory.org.ph';
             centerDetails['gcashQR'] = this.gcashSLQR;
+            centerDetails['mayaQR'] = this.mayaSLQR;
             centerDetails['primaryKey'] = this.pkSL;
             break;
         

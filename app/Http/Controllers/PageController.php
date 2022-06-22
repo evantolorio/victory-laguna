@@ -47,9 +47,15 @@ class PageController extends Controller
             'gcashCABQR'   => asset('images/gcash_cabuyao.png'),
             'gcashCALQR'   => asset('images/gcash_calamba.png'),
             'gcashLBQR'    => asset('images/gcash_losbanos.png'),
-            'gcashSLQR'   => asset('images/gcash_siniloan.png'),
+            'gcashSLQR'    => asset('images/gcash_siniloan.png'),
             'gcashSPQR'    => asset('images/gcash_sanpablo.png'),
             'gcashSCQR'    => asset('images/gcash_stacruz.png'),
+            'mayaCABQR'    => asset('images/maya_cabuyao.png'),
+            'mayaCALQR'    => asset('images/maya_calamba.png'),
+            'mayaLBQR'     => asset('images/maya_losbanos.png'),
+            'mayaSLQR'     => asset('images/maya_siniloan.png'),
+            'mayaSPQR'     => asset('images/maya_sanpablo.png'),
+            'mayaSCQR'     => asset('images/maya_stacruz.png'),
         ];
 
         return Inertia::render('HomePage/Give', $data);
