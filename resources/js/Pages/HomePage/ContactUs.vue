@@ -15,7 +15,7 @@
         <div>
           <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
             <p>
-              Victory Laguna is composed of six churches consectetur adipiscing elit, sed do eiusmod tempor incididunt:
+              Victory has six locations in Laguna:
             </p>
           </div>
         </div>
