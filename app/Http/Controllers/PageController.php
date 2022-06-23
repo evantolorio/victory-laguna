@@ -70,8 +70,12 @@ class PageController extends Controller
     public function whoWeAre(Request $request)
     {
         $data = [
-            'homeImgUrl' => asset('images/homepage.png'),
-            'logoUrl'    => asset('images/victory_blue.png'),
+            'whoWeAreImgUrl'  => asset('images/who_we_are.jpeg'),
+            'logoUrl'         => asset('images/victory_blue.png'),
+            'historyImgUrl'   => asset('images/history.jpeg'),
+            'statementImgUrl' => asset('images/statement_of_faith.jpeg'),
+            'valuesImgUrl'    => asset('images/core_values.jpeg'),
+            'ministryImgUrl'  => asset('images/ministry.jpeg'),
         ];
 
         return Inertia::render('HomePage/WhoWeAre', $data);

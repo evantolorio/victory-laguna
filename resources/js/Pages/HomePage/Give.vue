@@ -1006,7 +1006,6 @@
       // Resize initial Giving image
       this.givingImageHeight = document.querySelector('#giving-container').offsetHeight;
 
-
     }
 
   }
