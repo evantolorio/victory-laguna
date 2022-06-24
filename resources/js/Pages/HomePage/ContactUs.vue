@@ -28,7 +28,7 @@
                   <h1 class="text-xl font-extrabold text-gray-900 uppercase">
                     Victory Cabuyao
                   </h1>
-                  <p class="mt-2 text-gray-500 text-sm">Phone</p>
+                  <p class="mt-2 text-gray-500 text-sm">Mobile</p>
                   <p class="text-sm">0917 179 7105</p>
                   <p class="mt-2 text-gray-500 text-sm">Email</p>
                   <p class="text-sm">cabuyao@victory.org.ph</p>
@@ -50,6 +50,8 @@
                     Victory Calamba
                   </h1>
                   <p class="mt-2 text-gray-500 text-sm">Phone</p>
+                  <p class="text-sm">(049) 300 5620</p>
+                  <p class="mt-2 text-gray-500 text-sm">Mobile</p>
                   <p class="text-sm">0917 179 7105</p>
                   <p class="mt-2 text-gray-500 text-sm">Email</p>
                   <p class="text-sm">calamba@victory.org.ph</p>
@@ -70,6 +72,8 @@
                   <h1 class="text-xl font-extrabold text-gray-900 uppercase">
                     Victory Los Baños
                   </h1>
+                  <p class="mt-2 text-gray-500 text-sm">Phone</p>
+                  <p class="text-sm">(049) 559 3572</p>
                   <p class="mt-2 text-gray-500 text-sm">Phone</p>
                   <p class="text-sm">0956 884 1964</p>
                   <p class="mt-2 text-gray-500 text-sm">Email</p>
@@ -92,6 +96,8 @@
                     Victory San Pablo
                   </h1>
                   <p class="mt-2 text-gray-500 text-sm">Phone</p>
+                  <p class="text-sm">(049) 562 7018</p>
+                  <p class="mt-2 text-gray-500 text-sm">Mobile</p>
                   <p class="text-sm">0917 503 3738</p>
                   <p class="mt-2 text-gray-500 text-sm">Email</p>
                   <p class="text-sm">sanpablo@victory.org.ph</p>
@@ -113,6 +119,8 @@
                     Victory Santa Cruz
                   </h1>
                   <p class="mt-2 text-gray-500 text-sm">Phone</p>
+                  <p class="text-sm">(049) 566 9700</p>
+                  <p class="mt-2 text-gray-500 text-sm">Mobile</p>
                   <p class="text-sm">0917 505 1123</p>
                   <p class="mt-2 text-gray-500 text-sm">Email</p>
                   <p class="text-sm">santacruz@victory.org.ph</p>
@@ -133,7 +141,7 @@
                   <h1 class="text-xl font-extrabold text-gray-900 uppercase">
                     Victory Siniloan
                   </h1>
-                  <p class="mt-2 text-gray-500 text-sm">Phone</p>
+                  <p class="mt-2 text-gray-500 text-sm">Mobile</p>
                   <p class="text-sm">0932 257 2835</p>
                   <p class="mt-2 text-gray-500 text-sm">Email</p>
                   <p class="text-sm">siniloan@victory.org.ph</p>
