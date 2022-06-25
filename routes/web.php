@@ -14,7 +14,7 @@ use App\Http\Controllers\PageController;
 |
 */
 
-Route::get('/', [PageController::class, 'index']);
+Route::get('/', [PageController::class, 'whoWeAre']);
 Route::get('/give', [PageController::class, 'give']);
 Route::get('/who-we-are', [PageController::class, 'whoWeAre']);
 Route::get('/contact-us', [PageController::class, 'contactUs']);

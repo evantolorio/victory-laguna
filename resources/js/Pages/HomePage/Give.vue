@@ -15,13 +15,13 @@
           <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <a href="#" 
               class="ml-6 whitespace-nowrap inline-flex items-center justify-center px-6 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75"
-              @click.prevent="goToPage('/who-we-are')"
+              @click.prevent="goToPage('/')"
             > 
               Who We Are
             </a>
             <a href="#" 
               class="ml-6 whitespace-nowrap inline-flex items-center justify-center px-10 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75"
-              @click.prevent="goToPage('/')"
+              @click.prevent="goToPage('/give')"
             > 
               Give
             </a>
@@ -641,7 +641,7 @@
       },
 
       giveButtonText() {
-        return (this.giveProcessing) ? 'Processing...' : 'Give';
+        return (this.giveProcessing) ? 'Processing...' : 'Continue';
       },
 
       formattedTotalAmount() {

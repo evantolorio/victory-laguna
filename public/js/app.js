@@ -19400,7 +19400,7 @@ __webpack_require__.r(__webpack_exports__);
       return "url(".concat(this.givingImgUrl, ")");
     },
     giveButtonText: function giveButtonText() {
-      return this.giveProcessing ? 'Processing...' : 'Give';
+      return this.giveProcessing ? 'Processing...' : 'Continue';
     },
     formattedTotalAmount: function formattedTotalAmount() {
       var sum = 0.0;
@@ -20804,13 +20804,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: "#",
     "class": "ml-6 whitespace-nowrap inline-flex items-center justify-center px-6 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75",
     onClick: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $options.goToPage('/who-we-are');
+      return $options.goToPage('/');
     }, ["prevent"]))
   }, " Who We Are "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "ml-6 whitespace-nowrap inline-flex items-center justify-center px-10 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75",
     onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $options.goToPage('/');
+      return $options.goToPage('/give');
     }, ["prevent"]))
   }, " Give "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
@@ -21297,11 +21297,13 @@ var _hoisted_8 = {
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "max-w-7xl mx-auto py-32 text-white"
+  "class": "max-w-7xl mx-auto py-20 text-white"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "text-5xl font-bold"
+  "class": "text-3xl font-bold"
+}, " Welcome to Victory Laguna Website! "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+  "class": "mt-12 text-5xl font-bold text-blue-300"
 }, " Who We Are "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-lg mt-4"
+  "class": "mt-2 text-lg text-gray-100"
 }, " We exist to Honor God and Make Disciples. ")], -1
 /* HOISTED */
 );
@@ -21595,13 +21597,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: "#",
     "class": "ml-6 whitespace-nowrap inline-flex items-center justify-center px-6 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75",
     onClick: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $options.goToPage('/who-we-are');
+      return $options.goToPage('/');
     }, ["prevent"]))
   }, " Who We Are "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "ml-6 whitespace-nowrap inline-flex items-center justify-center px-10 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75",
     onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $options.goToPage('/');
+      return $options.goToPage('/give');
     }, ["prevent"]))
   }, " Give "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
@@ -21747,13 +21749,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: "#",
     "class": "ml-6 whitespace-nowrap inline-flex items-center justify-center px-6 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75",
     onClick: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $options.goToPage('/who-we-are');
+      return $options.goToPage('/');
     }, ["prevent"]))
   }, " Who We Are "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "ml-6 whitespace-nowrap inline-flex items-center justify-center px-10 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75",
     onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $options.goToPage('/');
+      return $options.goToPage('/give');
     }, ["prevent"]))
   }, " Give "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",

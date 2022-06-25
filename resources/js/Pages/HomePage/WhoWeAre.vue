@@ -14,13 +14,13 @@
           <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <a href="#" 
               class="ml-6 whitespace-nowrap inline-flex items-center justify-center px-6 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75"
-              @click.prevent="goToPage('/who-we-are')"
+              @click.prevent="goToPage('/')"
             > 
               Who We Are
             </a>
             <a href="#" 
               class="ml-6 whitespace-nowrap inline-flex items-center justify-center px-10 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75"
-              @click.prevent="goToPage('/')"
+              @click.prevent="goToPage('/give')"
             > 
               Give
             </a>
@@ -42,11 +42,14 @@
     <div class="bg-cover shadow-md bg-blend-multiply bg-victory-blue"
       :style="{'background-image': whoWeAreImageUrl, 'height': `350px`}"
     >
-      <div class="max-w-7xl mx-auto py-32 text-white">
-        <h1 class="text-5xl font-bold">
+      <div class="max-w-7xl mx-auto py-20 text-white">
+        <h1 class="text-3xl font-bold">
+          Welcome to Victory Laguna Website!
+        </h1>
+        <h1 class="mt-12 text-5xl font-bold text-blue-300">
           Who We Are
         </h1>
-        <p class="text-lg mt-4">
+        <p class="mt-2 text-lg text-gray-100">
           We exist to Honor God and Make Disciples.
         </p>
       </div>
