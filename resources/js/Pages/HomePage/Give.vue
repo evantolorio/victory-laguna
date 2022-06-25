@@ -189,7 +189,7 @@
                     </select>
                   </div>
 
-                  <div class="col-span-5 sm:col-span-3">
+                  <div v-show="giveThruChannel == 'credit_debit'" class="col-span-5 sm:col-span-3">
                     <div class="flex items-start">
                       <div class="flex items-center h-5">
                         <input v-model="dataPrivacy"
@@ -814,11 +814,21 @@
       },
 
       proceedToGiving() {
-        // Proceed to next tab if all general info fields are filled up
-        if (this.giveToCenter && this.giveThruChannel && this.dataPrivacy)
-          this.activeTab = 'specific';
+        // Proceed to next tab if necessary general info fields are filled up
+        if (this.giveThruChannel == 'credit_debit') {
+          if (this.giveToCenter && this.giveThruChannel && this.dataPrivacy)
+            this.activeTab = 'specific';
           
-        return;  
+          return;
+
+        } else {
+          if (this.giveToCenter && this.giveThruChannel)
+            this.activeTab = 'specific';
+          
+          return;
+          
+        }
+
       },
 
       addGiving() {
