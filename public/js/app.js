@@ -20255,7 +20255,7 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-sm text-emerald-600 mt-2 mb-4"
-}, "Giving through PayMaya is successful. Thank you for your generosity!", -1
+}, "Giving through Maya is successful. Thank you for your generosity!", -1
 /* HOISTED */
 );
 
@@ -20297,7 +20297,7 @@ var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-sm text-rose-600 mt-2 mb-4"
-}, "Giving through PayMaya failed. Please take note of your reference number and contact our finance officer for further details.", -1
+}, "Giving through Maya failed. Please take note of your reference number and contact our finance officer for further details.", -1
 /* HOISTED */
 );
 
@@ -20339,7 +20339,7 @@ var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-sm text-amber-600 mt-2 mb-4"
-}, "Giving through PayMaya canceled.", -1
+}, "Giving through Maya canceled.", -1
 /* HOISTED */
 );
 

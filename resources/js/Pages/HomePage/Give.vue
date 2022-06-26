@@ -54,7 +54,7 @@
               </div>
               <div class="ml-2">
                 <h1 class="text-base font-bold text-emerald-800">Giving Success</h1>
-                <p class="text-sm text-emerald-600 mt-2 mb-4">Giving through PayMaya is successful. Thank you for your generosity!</p>
+                <p class="text-sm text-emerald-600 mt-2 mb-4">Giving through Maya is successful. Thank you for your generosity!</p>
                 <a @click.prevent="payMayaGivingStatus = ''"
                   href="#!" class="text-sm text-emerald-800 font-semibold"
                 >
@@ -75,7 +75,7 @@
               </div>
               <div class="ml-2">
                 <h1 class="text-base font-bold text-rose-800">Giving Failed</h1>
-                <p class="text-sm text-rose-600 mt-2 mb-4">Giving through PayMaya failed. Please take note of your reference number and contact our finance officer for further details.</p>
+                <p class="text-sm text-rose-600 mt-2 mb-4">Giving through Maya failed. Please take note of your reference number and contact our finance officer for further details.</p>
                 <a @click.prevent="payMayaGivingStatus = ''"
                   href="#!" class="text-sm text-rose-800 font-semibold"
                 >
@@ -96,7 +96,7 @@
               </div>
               <div class="ml-2">
                 <h1 class="text-base font-bold text-amber-800">Giving Canceled</h1>
-                <p class="text-sm text-amber-600 mt-2 mb-4">Giving through PayMaya canceled.</p>
+                <p class="text-sm text-amber-600 mt-2 mb-4">Giving through Maya canceled.</p>
                 <a @click.prevent="payMayaGivingStatus = ''"
                   href="#!" class="text-sm text-amber-800 font-semibold"
                 >
