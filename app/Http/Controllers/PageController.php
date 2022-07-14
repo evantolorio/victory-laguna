@@ -90,6 +90,7 @@ class PageController extends Controller
     public function contactUs(Request $request)
     {
         $data = [
+            'mapImgUrl' => asset('images/map.jpg'),
             'homeImgUrl' => asset('images/homepage.png'),
             'logoUrl'    => asset('images/victory_blue.png'),
         ];

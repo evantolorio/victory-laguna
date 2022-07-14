@@ -1,18 +1,14 @@
 <template>
   <div id="initial-viewport" class="h-screen">
     <div class="grid grid-cols-2 h-full">
-      <div class="bg-gray-50 bg-cover"
-        :style="{'background-image': homeImageUrl}"
-      >
+      <div class="bg-cover">
         <!-- Left Side -->
         <div class="grid grid-cols-1 mx-auto">
           <div class="flex justify-center mt-20">
-            <!-- Logo -->
-            <img :src="logoUrl" class="h-40" alt="Victory Logo">
+            <img :src="mapImgUrl" class="h-5/6" alt="Map Image">
           </div>
 
-          <!-- Verse -->
-          <div class="w-3/5 mx-auto grid grid-cols-1 mt-10">
+          <!-- <div class="w-3/5 mx-auto grid grid-cols-1 mt-10">
             <div class="flex justify-center mt-10">
               <p class="w-full italic text-5xl font-bold">
                 ""
@@ -35,10 +31,10 @@
                 VICTORY LAGUNA GIVING SITE
               </a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
-      <div class="relative bg-white h-full">
+      <div class="relative bg-white overflow-y-scroll">
         <!-- Right Side -->
         <div id="nav-links" class="max-w-7xl mx-auto px-4 sm:px-6">
           <div class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
@@ -77,7 +73,7 @@
 
 <script>
   export default {
-    props: ['title', 'homeImgUrl', 'logoUrl'],
+    props: ['title', 'mapImgUrl', 'homeImgUrl', 'logoUrl'],
 
     watch: {
       title: {
@@ -91,6 +87,10 @@
     computed: {
       homeImageUrl() {
         return `url(${this.homeImgUrl})`; 
+      },
+
+      mapImageUrl() {
+        return `url(${this.mapImgUrl})`; 
       }
     },
 

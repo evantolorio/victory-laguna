@@ -19321,7 +19321,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Layout: _Layout__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ['homeImgUrl', 'logoUrl'],
+  props: ['mapImgUrl', 'homeImgUrl', 'logoUrl'],
   methods: {}
 });
 
@@ -19854,7 +19854,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['title', 'homeImgUrl', 'logoUrl'],
+  props: ['title', 'mapImgUrl', 'homeImgUrl', 'logoUrl'],
   watch: {
     title: {
       immediate: true,
@@ -19866,6 +19866,9 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     homeImageUrl: function homeImageUrl() {
       return "url(".concat(this.homeImgUrl, ")");
+    },
+    mapImageUrl: function mapImageUrl() {
+      return "url(".concat(this.mapImgUrl, ")");
     }
   },
   methods: {
@@ -19983,6 +19986,10 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "text-xl font-extrabold text-gray-900 uppercase"
 }, " Victory Cabuyao "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "mt-2 text-gray-500 text-sm"
+}, "Phone"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "text-sm"
+}, "(049) 300 5620"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "mt-2 text-gray-500 text-sm"
 }, "Mobile"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-sm"
 }, "0917 179 7105"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
@@ -20047,7 +20054,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "mt-2 text-gray-500 text-sm"
 }, "Phone"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-sm"
-}, "0956 884 1964"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+}, "0917 146 0833"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "mt-2 text-gray-500 text-sm"
 }, "Email"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-sm"
@@ -20134,6 +20141,10 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "text-xl font-extrabold text-gray-900 uppercase"
 }, " Victory Siniloan "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "mt-2 text-gray-500 text-sm"
+}, "Phone"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "text-sm"
+}, "(049) 566 9700"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "mt-2 text-gray-500 text-sm"
 }, "Mobile"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-sm"
 }, "0932 257 2835"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
@@ -20160,6 +20171,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_layout, {
     title: "Contact Us | Victory Laguna Giving Site",
+    mapImgUrl: $props.mapImgUrl,
     homeImgUrl: $props.homeImgUrl,
     logoUrl: $props.logoUrl
   }, {
@@ -20171,7 +20183,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["homeImgUrl", "logoUrl"]);
+  , ["mapImgUrl", "homeImgUrl", "logoUrl"]);
 }
 
 /***/ }),
@@ -21716,43 +21728,36 @@ var _hoisted_2 = {
   "class": "grid grid-cols-2 h-full"
 };
 var _hoisted_3 = {
-  "class": "grid grid-cols-1 mx-auto"
+  "class": "bg-cover"
 };
 var _hoisted_4 = {
+  "class": "grid grid-cols-1 mx-auto"
+};
+var _hoisted_5 = {
   "class": "flex justify-center mt-20"
 };
-var _hoisted_5 = ["src"];
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"w-3/5 mx-auto grid grid-cols-1 mt-10\"><div class=\"flex justify-center mt-10\"><p class=\"w-full italic text-5xl font-bold\"> &quot;&quot; </p></div><div class=\"flex justify-center mt-4\"><p class=\"w-full italic text-center text-2xl font-semibold\"> ... for God loves a cheerful giver. </p></div><div class=\"flex justify-center mt-4\"><p class=\"w-full italic text-right\"> 2 Corinthians 9:7 </p></div></div><div class=\"flex justify-center mt-20\"><div class=\"hidden md:flex items-center\"><a href=\"#\" class=\"whitespace-nowrap inline-flex items-center justify-center px-6 py-4 border border-transparent shadow-sm text-base font-medium text-white bg-victory-blue cursor-auto\"> VICTORY LAGUNA GIVING SITE </a></div></div>", 2);
-
-var _hoisted_8 = {
-  "class": "relative bg-white h-full"
+var _hoisted_6 = ["src"];
+var _hoisted_7 = {
+  "class": "relative bg-white overflow-y-scroll"
 };
-var _hoisted_9 = {
+var _hoisted_8 = {
   id: "nav-links",
   "class": "max-w-7xl mx-auto px-4 sm:px-6"
 };
-var _hoisted_10 = {
+var _hoisted_9 = {
   "class": "flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10"
 };
-var _hoisted_11 = {
+var _hoisted_10 = {
   "class": "hidden md:flex items-center justify-end md:flex-1 lg:w-0"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "bg-gray-50 bg-cover",
-    style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)({
-      'background-image': $options.homeImageUrl
-    })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Left Side "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: $props.logoUrl,
-    "class": "h-40",
-    alt: "Victory Logo"
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Left Side "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: $props.mapImgUrl,
+    "class": "h-5/6",
+    alt: "Map Image"
   }, null, 8
   /* PROPS */
-  , _hoisted_5)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Verse "), _hoisted_6])], 4
-  /* STYLE */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Side "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  , _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"w-3/5 mx-auto grid grid-cols-1 mt-10\">\n            <div class=\"flex justify-center mt-10\">\n              <p class=\"w-full italic text-5xl font-bold\">\n                \"\"\n              </p>\n            </div>\n            <div class=\"flex justify-center mt-4\">\n              <p class=\"w-full italic text-center text-2xl font-semibold\">\n                ... for God loves a cheerful giver.\n              </p>\n            </div>\n            <div class=\"flex justify-center mt-4\">\n              <p class=\"w-full italic text-right\">\n                2 Corinthians 9:7\n              </p>\n            </div>\n          </div>\n          <div class=\"flex justify-center mt-20\">\n            <div class=\"hidden md:flex items-center\">\n              <a href=\"#\" class=\"whitespace-nowrap inline-flex items-center justify-center px-6 py-4 border border-transparent shadow-sm text-base font-medium text-white bg-victory-blue cursor-auto\"> \n                VICTORY LAGUNA GIVING SITE\n              </a>\n            </div>\n          </div> ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Side "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "ml-6 whitespace-nowrap inline-flex items-center justify-center px-6 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-victory-blue hover:bg-victory-blue/75",
     onClick: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
