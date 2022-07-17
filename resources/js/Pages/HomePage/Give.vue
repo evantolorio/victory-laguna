@@ -279,9 +279,11 @@
                   <div class="col-span-6 sm:col-span-6 mt-4">
                     <div class="flex items-center">
                       <h1 class="text font-medium text-gray-900 mr-2">Type of Giving</h1>
-                      <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-                      </svg>
+                      <a href="#!" @click.prevent="toggleModal = true">
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
                     </div>
                   </div>
 
@@ -555,6 +557,89 @@
       </div>
     </div>
 
+    <!-- Modal -->
+    <div :class="toggleModal ? 'block' : 'hidden'" class="relative z-10 transition" 
+      aria-labelledby="modal-title" role="dialog" aria-modal="true"
+    >
+      <!--
+        Background backdrop, show/hide based on modal state.
+
+        Entering: "ease-out duration-300"
+          From: "opacity-0"
+          To: "opacity-100"
+        Leaving: "ease-in duration-200"
+          From: "opacity-100"
+          To: "opacity-0"
+      -->
+      <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+      <div class="fixed z-10 inset-0 overflow-y-auto">
+        <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+          <!--
+            Modal panel, show/hide based on modal state.
+
+            Entering: "ease-out duration-300"
+              From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              To: "opacity-100 translate-y-0 sm:scale-100"
+            Leaving: "ease-in duration-200"
+              From: "opacity-100 translate-y-0 sm:scale-100"
+              To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          -->
+          <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-6 sm:pl-4 sm:pr-8 sm:pb-6">
+              <div class="sm:flex sm:items-start">
+                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-victory-blue/25 sm:mx-0 sm:h-10 sm:w-10">
+                  <svg class="h-6 w-6 text-victory-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                  <h3 class="mt-2 text-xl leading-6 font-semibold text-gray-900" 
+                    id="modal-title"
+                  >
+                    {{ centerDetails['name'] }}
+                  </h3>
+                  <div class="mt-4">
+                    <p class="text-sm text-gray-500 pt-3 text-center">
+                      We can walk you through our online giving. <br> Send a message to <b>{{ centerDetails['mobileNo'] }}</b> with the following details: 
+                    </p>
+                    <p class="text-sm text-gray-500 pt-3 text-center">
+                      <b>&lt;First Name&gt; &lt;Last Name&gt; &lt;Email Address&gt;</b>
+                    </p>
+                    <p class="text-sm text-gray-500 pt-3 pb-4 text-center">
+                      You can reach us during Tuesdays to Sundays, 9 AM to 5 PM.
+                    </p>
+                    <hr>
+                    <p class="text-sm text-gray-500 pt-4 text-center">
+                      You may also download this guide to know how to give.
+                    </p>
+                    <div class="flex items-center justify-center pt-4 text-sm text-victory-blue">
+                      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                      <a :href="givingInfoUrl" 
+                        class="pl-1"
+                        download
+                      >
+                        Online Giving Instructions
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button @click.prevent="toggleModal = false"
+                type="button" 
+                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-victory-blue text-base font-medium text-white hover:bg-victory-blue/75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </template>
@@ -567,11 +652,13 @@
       'pkCAB', 'pkCAL', 'pkLB', 'pkSL', 'pkSP', 'pkSC', 
       'gcashCABQR', 'gcashCALQR', 'gcashLBQR', 'gcashSLQR', 'gcashSPQR', 'gcashSCQR',
       'mayaCABQR', 'mayaCALQR', 'mayaLBQR', 'mayaSLQR', 'mayaSPQR', 'mayaSCQR',
+      'givingInfoUrl'
     ],
 
     data() {
       return {
         givingImageHeight: 0,
+        toggleModal: false,
         payMayaGivingStatus:'',
         activeTab: 'general',
         giveProcessing: false,
@@ -698,6 +785,7 @@
             centerDetails['name'] = 'Victory Cabuyao';
             centerDetails['givingAckLink'] = 'bit.ly/vcabuyaoonlinegiving';
             centerDetails['email'] = 'cabuyao@victory.org.ph';
+            centerDetails['mobileNo'] = '0915 597 5084';
             centerDetails['gcashQR'] = this.gcashCABQR;
             centerDetails['mayaQR'] = this.mayaCABQR;
             centerDetails['primaryKey'] = this.pkCAB;
@@ -707,6 +795,7 @@
             centerDetails['name'] = 'Victory Calamba';
             centerDetails['givingAckLink'] = 'bit.ly/vcalambaonlinegiving';
             centerDetails['email'] = 'calamba@victory.org.ph';
+            centerDetails['mobileNo'] = '0915 597 5084';
             centerDetails['gcashQR'] = this.gcashCALQR;
             centerDetails['mayaQR'] = this.mayaCALQR;
             centerDetails['primaryKey'] = this.pkCAL;
@@ -716,6 +805,7 @@
             centerDetails['name'] = 'Victory Los Baños';
             centerDetails['givingAckLink'] = 'bit.ly/vlbonlinegiving';
             centerDetails['email'] = 'losbanos@victory.org.ph';
+            centerDetails['mobileNo'] = '0956 884 1964';
             centerDetails['gcashQR'] = this.gcashLBQR;
             centerDetails['mayaQR'] = this.mayaLBQR;
             centerDetails['primaryKey'] = this.pkLB;
@@ -725,6 +815,7 @@
             centerDetails['name'] = 'Victory San Pablo';
             centerDetails['givingAckLink'] = 'bit.ly/vsanpabloonlinegiving';
             centerDetails['email'] = 'sanpablo@victory.org.ph';
+            centerDetails['mobileNo'] = '0945 992 7943';
             centerDetails['gcashQR'] = this.gcashSPQR;
             centerDetails['mayaQR'] = this.mayaSPQR;
             centerDetails['primaryKey'] = this.pkSP;
@@ -734,6 +825,7 @@
             centerDetails['name'] = 'Victory Santa Cruz';
             centerDetails['givingAckLink'] = 'bit.ly/vsantacruzonlinegiving';
             centerDetails['email'] = 'santacruz@victory.org.ph';
+            centerDetails['mobileNo'] = '0927 251 5241';
             centerDetails['gcashQR'] = this.gcashSCQR;
             centerDetails['mayaQR'] = this.mayaSCQR;
             centerDetails['primaryKey'] = this.pkSC;
@@ -743,6 +835,7 @@
             centerDetails['name'] = 'Victory Siniloan';
             centerDetails['givingAckLink'] = 'bit.ly/vSiniloanonlinegiving';
             centerDetails['email'] = 'siniloan@victory.org.ph';
+            centerDetails['mobileNo'] = '0999 893 3248';
             centerDetails['gcashQR'] = this.gcashSLQR;
             centerDetails['mayaQR'] = this.mayaSLQR;
             centerDetails['primaryKey'] = this.pkSL;
