@@ -21891,7 +21891,7 @@ var _hoisted_1 = {
   "class": "h-screen"
 };
 var _hoisted_2 = {
-  "class": "grid grid-cols-2 h-full"
+  "class": "grid grid-cols-2 h-full overflow-hidden"
 };
 var _hoisted_3 = {
   "class": "bg-cover"

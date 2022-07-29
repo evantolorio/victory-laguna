@@ -1,6 +1,6 @@
 <template>
   <div id="initial-viewport" class="h-screen">
-    <div class="grid grid-cols-2 h-full">
+    <div class="grid grid-cols-2 h-full overflow-hidden">
       <div class="bg-cover">
         <!-- Left Side -->
         <div class="grid grid-cols-1 mx-auto">
