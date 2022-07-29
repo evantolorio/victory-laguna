@@ -7,7 +7,7 @@
   
     <div class="relative bg-white">
       <!-- Contact Us -->
-      <div class="grid grid-cols-1">
+      <div class="grid grid-cols-1 pb-8">
         <div>
           <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-bold text-gray-900">Contact Us</h1>
@@ -21,7 +21,7 @@
           </div>
         </div>
         <div>
-          <div class="grid grid-cols-2 max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-2 max-w-7xl mx-auto pt-4 pb-8 px-4 sm:px-6 lg:px-8">
             <!-- Victory Cabuyao -->
             <div class="mr-2 mb-2">
               <div class="max-w-7xl rounded-md lg:flex">
