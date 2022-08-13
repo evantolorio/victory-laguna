@@ -20432,7 +20432,7 @@ var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option disabled value=\"\">Please select center</option><option value=\"cabuyao\">Victory Cabuyao</option><option value=\"calamba\">Victory Calamba</option><option value=\"los_banos\">Victory Los Baños</option><option value=\"san_pablo\">Victory San Pablo</option><option value=\"sta_cruz\">Victory Santa Cruz</option><option value=\"siniloan\">Victory Siniloan</option>", 7);
+var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option disabled value=\"\">Please select location</option><option value=\"cabuyao\">Victory Cabuyao</option><option value=\"calamba\">Victory Calamba</option><option value=\"los_banos\">Victory Los Baños</option><option value=\"san_pablo\">Victory San Pablo</option><option value=\"sta_cruz\">Victory Santa Cruz</option><option value=\"siniloan\">Victory Siniloan</option>", 7);
 
 var _hoisted_55 = [_hoisted_48];
 var _hoisted_56 = {

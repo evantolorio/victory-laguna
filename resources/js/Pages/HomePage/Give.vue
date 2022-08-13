@@ -166,7 +166,7 @@
                     <select v-model="giveToCenter"
                       id="location" name="location" autocomplete="location-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
-                      <option disabled value="">Please select center</option>
+                      <option disabled value="">Please select location</option>
                       <option value="cabuyao">Victory Cabuyao</option>
                       <option value="calamba">Victory Calamba</option>
                       <option value="los_banos">Victory Los Baños</option>
