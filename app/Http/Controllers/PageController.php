@@ -19,7 +19,7 @@ class PageController extends Controller
         $data = [
             'homeImgUrl' => asset('images/homepage.png'),
             'phoneUrl'   => asset('images/phone.png'),
-            'logoUrl'    => asset('images/victory_blue.png'),
+            'logoUrl'    => asset('images/victory_laguna_blue.png'),
         ];
 
         return Inertia::render('HomePage/Index', $data);
@@ -36,7 +36,7 @@ class PageController extends Controller
         $data = [
             'appUrl'        => env('APP_URL'),
             'payMayaUrl'    => env('PAYMAYA_URL'),
-            'logoUrl'       => asset('images/victory_blue.png'),
+            'logoUrl'       => asset('images/victory_laguna_blue.png'),
             'givingImgUrl'  => asset('images/giving_updated.jpeg'),
             'pkCAB'         => base64_encode(env('PAYMAYA_PK_CAB') . ':'),
             'pkCAL'         => base64_encode(env('PAYMAYA_PK_CAL') . ':'),
@@ -72,7 +72,7 @@ class PageController extends Controller
     {
         $data = [
             'whoWeAreImgUrl'  => asset('images/who_we_are.jpeg'),
-            'logoUrl'         => asset('images/victory_blue.png'),
+            'logoUrl'         => asset('images/victory_laguna_blue.png'),
             'historyImgUrl'   => asset('images/history.jpeg'),
             'statementImgUrl' => asset('images/statement_of_faith.jpeg'),
             'valuesImgUrl'    => asset('images/core_values.jpeg'),
@@ -93,7 +93,7 @@ class PageController extends Controller
         $data = [
             'mapImgUrl' => asset('images/map.jpg'),
             'homeImgUrl' => asset('images/homepage.png'),
-            'logoUrl'    => asset('images/victory_blue.png'),
+            'logoUrl'    => asset('images/victory_laguna_blue.png'),
         ];
 
         return Inertia::render('HomePage/ContactUs', $data);
