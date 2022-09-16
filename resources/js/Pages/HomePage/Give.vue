@@ -267,12 +267,15 @@
                     </span>
                   </div>
 
-                  <div class="col-span-6 sm:col-span-1">
+                  <div class="col-span-6 sm:col-span-2">
                     <label for="country" class="block text-sm font-medium text-gray-700">Country *</label>
                     <select v-model="country"
                       id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
-                      <option value="PH">PH</option>
+                      <template v-for="(value, key) in countries" :key="key">
+                        <option v-if="key =='PH'" :value="key" selected>{{ value }}</option>
+                        <option v-else :value="key">{{ value }}</option>
+                      </template>
                     </select>
                   </div>
 
@@ -646,6 +649,10 @@
 
 
 <script>
+  import countries from "i18n-iso-countries";
+
+  countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
+
   export default {
     props: [
       'appUrl', 'payMayaUrl', 'logoUrl', 'givingImgUrl', 
@@ -700,7 +707,9 @@
           'lastName': false,
           'mobileNo': false,
           'email': false
-        }
+        },
+        countries: countries.getNames("en", {select: "official"})
+
       }
     },
 
@@ -1108,7 +1117,6 @@
 
       // Resize initial Giving image
       this.givingImageHeight = document.querySelector('#giving-container').offsetHeight;
-
     }
 
   }
