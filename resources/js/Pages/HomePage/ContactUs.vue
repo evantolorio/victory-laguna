@@ -145,13 +145,13 @@
                     Victory Siniloan
                   </h1>
                   <p class="mt-2 text-gray-500 text-sm">Phone</p>
-                  <p class="text-sm">(049) 566 9700</p>
+                  <p class="text-sm">(049) 545 9331</p>
                   <p class="mt-2 text-gray-500 text-sm">Mobile</p>
                   <p class="text-sm">0932 257 2835</p>
                   <p class="mt-2 text-gray-500 text-sm">Email</p>
                   <p class="text-sm">siniloan@victory.org.ph</p>
                   <p class="mt-2 text-gray-500 text-sm">Office Address</p>
-                  <p class="text-sm">Primark Town Center Sitio Mapagmahal Brgy Pagsawitan Santa Cruz Laguna</p>
+                  <p class="text-sm">2nd Flr. DelRos Bldg. III, G. Redor St., Brgy. Pandeño, Siniloan, Laguna</p>
                   <p class="mt-2 text-gray-500 text-sm">Facebook</p>
                   <p class="text-sm">
                     <a href="https://www.facebook.com/VictorySiniloan" class="text-indigo-600">Victory Siniloan</a>
