@@ -323,7 +323,7 @@
     },
 
     mounted() {
-      document.title = 'Who We Are | Victory Laguna Giving Site';
+      document.title = 'Who We Are | Victory Laguna';
     }
 
   }

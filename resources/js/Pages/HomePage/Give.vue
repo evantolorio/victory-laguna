@@ -1102,7 +1102,7 @@
     },
 
     mounted() {
-      document.title = 'Give | Victory Laguna Giving Site';
+      document.title = 'Give | Victory Laguna';
 
       // Check if there's an init parameter
       let urlParams = this.getUrlParams();

@@ -1,5 +1,5 @@
 <template>
-  <layout title="Contact Us | Victory Laguna Giving Site"
+  <layout title="Contact Us | Victory Laguna"
     :mapImgUrl="mapImgUrl"
     :homeImgUrl="homeImgUrl"
     :logoUrl="logoUrl"
