@@ -328,7 +328,7 @@
                                 class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
                               >
                                 <option>PHP</option>
-                                <option>USD</option>
+                                <!-- <option>USD</option> -->
                               </select>
                             </div>
                           </div>
