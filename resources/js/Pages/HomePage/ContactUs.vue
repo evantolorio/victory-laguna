@@ -30,13 +30,13 @@
                     Victory Cabuyao
                   </h1>
                   <p class="mt-2 text-gray-500 text-sm">Phone</p>
-                  <p class="text-sm">(049) 300 5620</p>
+                  <p class="text-sm">0991 913 1163</p>
                   <p class="mt-2 text-gray-500 text-sm">Mobile</p>
-                  <p class="text-sm">0917 179 7105</p>
+                  <p class="text-sm">0991 913 1163</p>
                   <p class="mt-2 text-gray-500 text-sm">Email</p>
                   <p class="text-sm">cabuyao@victory.org.ph</p>
                   <p class="mt-2 text-gray-500 text-sm">Office Address</p>
-                  <p class="text-sm">2nd Floor Building 3 Dension Compound National Highway Brgy. Halang Calamba City, Laguna</p>
+                  <p class="text-sm">3rd Flr Serafin Bldg. 223 Banlic, Cabuyao, Laguna</p>
                   <p class="mt-2 text-gray-500 text-sm">Facebook</p>
                   <p class="text-sm">
                     <a href="https://www.facebook.com/VictoryCabuyao" class="text-indigo-600">Victory Cabuyao</a>
