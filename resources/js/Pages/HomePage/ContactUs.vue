@@ -122,7 +122,7 @@
                     Victory Santa Cruz
                   </h1>
                   <p class="mt-2 text-gray-500 text-sm">Phone</p>
-                  <p class="text-sm">(049) 566 9700</p>
+                  <p class="text-sm">(049) 254 0468</p>
                   <p class="mt-2 text-gray-500 text-sm">Mobile</p>
                   <p class="text-sm">0917 505 1123</p>
                   <p class="mt-2 text-gray-500 text-sm">Email</p>
