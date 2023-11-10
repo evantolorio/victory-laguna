@@ -30,9 +30,9 @@
                     Victory Cabuyao
                   </h1>
                   <p class="mt-2 text-gray-500 text-sm">Phone</p>
-                  <p class="text-sm">0991 913 1163</p>
+                  <p class="text-sm">(049) 300 5620</p>
                   <p class="mt-2 text-gray-500 text-sm">Mobile</p>
-                  <p class="text-sm">0991 913 1163</p>
+                  <p class="text-sm">0917 179 7105</p>
                   <p class="mt-2 text-gray-500 text-sm">Email</p>
                   <p class="text-sm">cabuyao@victory.org.ph</p>
                   <p class="mt-2 text-gray-500 text-sm">Office Address</p>
